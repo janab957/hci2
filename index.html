@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LibraNet</title>
 
   <!-- Tailwind CSS CDN -->
@@ -12,36 +12,34 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <!-- External CSS -->
-  <link rel="stylesheet" href="overallCSS_fixed.css" />
+  <link rel="stylesheet" href="overallCSS.css" />
 </head>
 <body class="bg-gray-100">
 
-  <!-- Mobile Top Navigation (Only visible on mobile) -->
-  <header class="mobile-top-nav md:hidden fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-4 py-3 bg-[#18354a] text-white shadow">
-    <button id="hamburger" class="text-xl p-1">
-      <i class="fas fa-bars"></i>
-    </button>
-    <div class="flex items-center space-x-2">
-      <i class="fas fa-book-open text-lg"></i>
-      <span class="font-bold text-sm">LibraNet</span>
-    </div>
-    
-    <div class="flex items-center space-x-3">
-      <button id="mobile-notification-toggle" class="relative p-1">
-        <i class="fas fa-bell text-sm"></i>
+  <!-- Mobile Top Navigation -->
+  <header class="top-nav mobile-top-nav flex justify-between items-center px-4 py-2 md:hidden">
+    <div class="flex items-center gap-4">
+      <button id="hamburger" aria-label="Toggle menu">
+        <i class="fas fa-bars text-white text-xl"></i>
       </button>
-      <i class="fas fa-user-circle text-sm"></i>
+      <span class="text-white font-bold text-lg">LibraNet</span>
+    </div>
+    <div class="flex items-center gap-4">
+      <button id="mobile-notification-toggle" aria-label="Notifications">
+        <i class="fas fa-bell text-white text-lg"></i>
+      </button>
+      <i class="fas fa-user-circle text-white text-lg"></i>
     </div>
   </header>
 
-  <!-- Desktop Top Navigation (Original - Completely Preserved) -->
-  <header class="top-nav hidden md:flex">
+  <!-- Desktop Top Navigation -->
+  <header class="top-nav hidden md:flex justify-between items-center px-6">
     <div class="flex items-center space-x-4">
       <i class="fas fa-book-open text-2xl"></i>
-      <span class="text-xl font-bold">LibraNet  </span>
-	  <a href="#"> <i class="fas fa-home"></i> Dashboard</a>
-	  
-      <!-- Categories with dropdown -->
+      <span class="text-xl font-bold">LibraNet</span>
+      <a href="#"><i class="fas fa-home"></i> Dashboard</a>
+
+      <!-- Categories Dropdown -->
       <div class="relative">
         <button id="categories-btn" class="w-full flex items-center justify-between px-4 py-2 text-left hover:bg-[#6D7F96] transition">
           <div class="flex items-center space-x-2">
@@ -50,8 +48,7 @@
           </div>
         </button>
 
-        <!-- Dropdown Menu -->
-        <div id="categories-dropdown" class="absolute left-0 top-full mt-1 hidden flex-col bg-[#6D7F96] text-white w-full rounded-md shadow-md z-[1000]">
+        <div id="categories-dropdown" class="absolute left-0 top-full mt-1 hidden flex-col bg-[#6D7F96] text-white w-full rounded-md shadow-md z-10">
           <a href="#" class="block px-4 py-2 hover:bg-[#415977]">Books</a>
           <a href="#" class="block px-4 py-2 hover:bg-[#415977]">Meeting Rooms</a>
           <a href="#" class="block px-4 py-2 hover:bg-[#415977]">Magazines</a>
@@ -59,145 +56,36 @@
         </div>
       </div>
     </div>
-    <nav class="space-x-6">
-      <!-- Install Button (NEW - Added to the left of notifications) -->
-      <button class="install-btn px-4 py-2 bg-[#18354a] text-white rounded-full hover:bg-[#415977] transition">
-       <i class="fa-solid fa-download"></i> <span class="font-bold">Install LibraNet</span>
-      </button>
-      
-      <div class="relative">
-        <a href="javascript:void(0);" id="notification-toggle" class="relative px-4 py-2 hover:bg-[#6D7F96] text-white rounded transition">
-          <i class="fas fa-bell"></i> Notifications
-        </a>
 
-        <!-- Notification Dropdown -->
-        <div id="notification-dropdown" class="notification-dropdown hidden no-rounded">
-          <div class="notification-item">
-            • Book request from Ali – Gilbert Strang's Calculus textbook<br />
-            <a href="#">View</a>
-          </div>
-          <div class="notification-item">
-            • Room booking from Sara – Room 201<br />
-            <a href="#">View</a>
-          </div>
-          <div class="notification-item">
-            • Room booking from John – Room 204<br />
-            <a href="#">View</a>
-          </div>
-          <div class="notification-footer">
-            <a href="#">See All Requests &gt;</a>
-          </div>
+    <nav class="space-x-6">
+      <a href="javascript:void(0);" id="notification-toggle" class="relative px-4 py-2 hover:bg-[#6D7F96] text-white rounded transition">
+        <i class="fas fa-bell"></i> Notifications
+      </a>
+      <a href="#"><i class="fas fa-user-circle"></i> Hello, Adrian</a>
+
+      <!-- Notification Dropdown -->
+      <div id="notification-dropdown" class="notification-dropdown hidden">
+        <div class="notification-item">
+          • Book request from Ali – Gilbert Strang's Calculus textbook<br />
+          <a href="#">View</a>
+        </div>
+        <div class="notification-item">
+          • Room booking from Sara – Room 201<br />
+          <a href="#">View</a>
+        </div>
+        <div class="notification-item">
+          • Room booking from John – Room 204<br />
+          <a href="#">View</a>
+        </div>
+        <div class="notification-footer">
+          <a href="#">See All Requests &gt;</a>
         </div>
       </div>
-
-      <a href="#"><i class="fas fa-user-circle"></i> Hello, Adrian</a>
     </nav>
   </header>
 
-  <!-- Mobile Notification Full Screen -->
-  <div id="mobile-notification-screen" class="mobile-notification-screen md:hidden hidden fixed inset-0 bg-white z-60">
-    <div class="flex items-center justify-between p-4 bg-[#18354a] text-white">
-      <button id="mobile-back-btn" class="flex items-center text-white">
-        <i class="fas fa-arrow-left mr-2"></i>
-        <span>Back</span>
-      </button>
-      <h3 class="font-bold text-lg">Notifications</h3>
-      <div></div>
-    </div>
-    
-    <div class="p-4">
-      <h4 class="font-semibold text-gray-800 mb-4">New Notifications</h4>
-      
-      <div class="space-y-3">
-        <div class="bg-[#e8dcc6] p-3 rounded border-l-4 border-blue-500">
-          <p class="text-sm font-medium">• Book request from Ali – Gilbert Strang's Calculus textbook</p>
-          <a href="#" class="text-[#6366f1] text-sm underline mt-1 inline-block">View</a>
-        </div>
-        
-        <div class="bg-[#e8dcc6] p-3 rounded border-l-4 border-blue-500">
-          <p class="text-sm font-medium">• Room booking from Sara – Room 201</p>
-          <a href="#" class="text-[#6366f1] text-sm underline mt-1 inline-block">View</a>
-        </div>
-        
-        <div class="bg-[#e8dcc6] p-3 rounded border-l-4 border-blue-500">
-          <p class="text-sm font-medium">• Room booking from John – Room 204</p>
-          <a href="#" class="text-[#6366f1] text-sm underline mt-1 inline-block">View</a>
-        </div>
-      </div>
-      
-      <div class="text-center pt-6">
-        <button class="bg-gray-800 text-white px-8 py-3 rounded-lg font-medium">View All Requests</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Mobile Sidebar Overlay -->
-  <div id="mobile-sidebar-overlay" class="mobile-sidebar-overlay md:hidden hidden fixed inset-0 bg-black bg-opacity-50 z-50">
-    <aside id="mobile-sidebar" class="mobile-sidebar bg-[#61584D] w-64 h-full transform -translate-x-full transition-transform duration-300 z-51">
-      <div class="p-4 space-y-2">
-        <a href="#" class="menu-item flex items-center justify-between bg-[#a6947e] px-3 py-3 rounded hover:bg-[#a6947e]">
-          <div class="flex items-center space-x-3 text-white">
-            <i class="fas fa-home"></i>
-            <span>Dashboard</span>
-          </div>
-          <i class="fas fa-chevron-right text-sm text-white"></i>
-        </a>
-
-        <a href="#" class="menu-item flex items-center justify-between px-3 py-3 rounded hover:bg-[#a6947e]">
-          <div class="flex items-center space-x-3 text-white">
-            <i class="fas fa-file-alt"></i>
-            <span>Resources Overview</span>
-          </div>
-          <i class="fas fa-chevron-right text-sm text-white"></i>
-        </a>
-
-        <a href="#" class="menu-item flex items-center justify-between px-3 py-3 rounded hover:bg-[#a6947e]">
-          <div class="flex items-center space-x-3 text-white">
-            <i class="fas fa-clipboard-check"></i>
-            <span>Booking Requests</span>
-          </div>
-          <i class="fas fa-chevron-right text-sm text-white"></i>
-        </a>
-
-        <a href="#" class="menu-item flex items-center justify-between px-3 py-3 rounded hover:bg-[#a6947e]">
-          <div class="flex items-center space-x-3 text-white">
-            <i class="fas fa-hourglass-half"></i>
-            <span>Waitlist</span>
-          </div>
-          <i class="fas fa-chevron-right text-sm text-white"></i>
-        </a>
-
-        <div class="py-8"></div>
-
-        <a href="#" class="menu-item flex items-center justify-between px-3 py-3 rounded hover:bg-[#a6947e]">
-          <div class="flex items-center space-x-3 text-white">
-            <i class="fas fa-user"></i>
-            <span>My Profile</span>
-          </div>
-          <i class="fas fa-chevron-right text-sm text-white"></i>
-        </a>
-
-        <a href="#" class="menu-item flex items-center justify-between px-3 py-3 rounded hover:bg-[#a6947e]">
-          <div class="flex items-center space-x-3 text-white">
-            <i class="fas fa-cog"></i>
-            <span>Settings</span>
-          </div>
-          <i class="fas fa-chevron-right text-sm text-white"></i>
-        </a>
-
-        <a href="#" class="menu-item flex items-center justify-between px-3 py-3 rounded hover:bg-[#a6947e]">
-          <div class="flex items-center space-x-3 text-white">
-            <i class="fas fa-question-circle"></i>
-            <span>Help & Support</span>
-          </div>
-          <i class="fas fa-chevron-right text-sm text-white"></i>
-        </a>
-      </div>
-    </aside>
-  </div>
-
-  <!-- Desktop Sidebar (Original - Completely Preserved) -->
-  <aside class="side-nav bg-[#61584D] px-2 py-3 space-y-1 w-60 min-h-screen hidden md:block">
+  <!-- Sidebar (Desktop) -->
+  <aside class="side-nav bg-[#61584D] px-2 py-3 space-y-1 w-60 min-h-screen">
     <a href="#" class="menu-item flex items-center justify-between bg-[#a6947e] px-3 py-2 rounded hover:bg-[#a6947e]">
       <div class="flex items-center space-x-3 text-white">
         <i class="fas fa-home"></i>
@@ -205,7 +93,6 @@
       </div>
       <i class="fas fa-chevron-right text-sm text-white arrow"></i>
     </a>
-
     <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
       <div class="flex items-center space-x-3 text-white">
         <i class="fas fa-file-alt"></i>
@@ -213,7 +100,6 @@
       </div>
       <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
     </a>
-
     <a id="booking-requests" href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
       <div class="flex items-center space-x-3 text-white">
         <i class="fas fa-clipboard-check"></i>
@@ -221,7 +107,6 @@
       </div>
       <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
     </a>
-
     <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
       <div class="flex items-center space-x-3 text-white">
         <i class="fas fa-hourglass-half"></i>
@@ -239,7 +124,6 @@
       </div>
       <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
     </a>
-
     <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
       <div class="flex items-center space-x-3 text-white">
         <i class="fas fa-cog"></i>
@@ -247,7 +131,6 @@
       </div>
       <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
     </a>
-
     <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
       <div class="flex items-center space-x-3 text-white">
         <i class="fas fa-question-circle"></i>
@@ -257,9 +140,52 @@
     </a>
   </aside>
 
-  <!-- Main Content (Original - Completely Preserved) -->
-  <main class="main-content ml-0 md:ml-64 mt-16 md:mt-16 px-4 md:px-6 py-4 md:py-8">
-    <!-- Search bar -->
+  <!-- Mobile Sidebar -->
+  <div id="mobile-sidebar-overlay" class="mobile-sidebar-overlay hidden"></div>
+  <nav id="mobile-sidebar" class="mobile-sidebar flex flex-col p-4">
+    <a href="#" class="block px-4 py-3 flex items-center gap-2 text-white"><i class="fas fa-home"></i> Dashboard</a>
+    <a href="#" class="block px-4 py-3 flex items-center gap-2 text-white"><i class="fas fa-file-alt"></i> Resources Overview</a>
+    <a href="#" class="block px-4 py-3 flex items-center gap-2 text-white"><i class="fas fa-clipboard-check"></i> Booking Requests</a>
+    <a href="#" class="block px-4 py-3 flex items-center gap-2 text-white"><i class="fas fa-hourglass-half"></i> Waitlist</a>
+    <div class="mt-auto border-t border-white/30 pt-3">
+      <a href="#" class="block px-4 py-3 flex items-center gap-2 text-white"><i class="fas fa-user"></i> My Profile</a>
+      <a href="#" class="block px-4 py-3 flex items-center gap-2 text-white"><i class="fas fa-cog"></i> Settings</a>
+      <a href="#" class="block px-4 py-3 flex items-center gap-2 text-white"><i class="fas fa-question-circle"></i> Help & Support</a>
+    </div>
+  </nav>
+
+  <!-- Mobile Notification Screen -->
+  <div id="mobile-notification-screen" class="mobile-notification-screen hidden">
+    <div class="flex items-center justify-between px-4 py-3 border-b">
+      <button id="mobile-back-btn" class="text-[#18354a] flex items-center gap-1"><i class="fas fa-arrow-left"></i> Back</button>
+      <h2 class="font-semibold">Notifications</h2>
+      <span></span>
+    </div>
+    <div class="p-4">
+      <h3 class="font-semibold mb-2">New Notifications</h3>
+      <div class="border-b border-[#eee] mb-3"></div>
+      <div class="space-y-3">
+        <div class="bg-[#f1e9df] p-3 rounded">
+          • Book request from Ali – Gilbert Strang's Calculus textbook<br />
+          <a href="#" class="underline text-sm text-[#554b8e]">View</a>
+        </div>
+        <div class="bg-[#f1e9df] p-3 rounded">
+          • Room booking from Sara – Room 201<br />
+          <a href="#" class="underline text-sm text-[#554b8e]">View</a>
+        </div>
+        <div class="bg-[#f1e9df] p-3 rounded">
+          • Room booking from John – Room 204<br />
+          <a href="#" class="underline text-sm text-[#554b8e]">View</a>
+        </div>
+      </div>
+      <div class="mt-6 text-center">
+        <a href="#" class="px-4 py-2 border border-black rounded text-sm">View All Requests</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-content ml-64 mt-16 px-6 py-8">
     <div class="search-container">
       <input type="text" placeholder="Search" class="search-input" />
       <button class="search-button">
@@ -267,12 +193,9 @@
       </button>
     </div>
 
-    <!-- Quick Access Section -->
     <section>
-      <h2 class="text-xl md:text-2xl font-bold ml-0 md:ml-6">Quick Access</h2>
-
+      <h2 class="text-2xl font-bold ml-6">Quick Access</h2>
       <div class="quick-access-grid">
-        <!-- BOOKS -->
         <div class="quick-card">
           <h3 class="card-title">📚 BOOKS</h3>
           <div class="card-info-row">
@@ -280,8 +203,6 @@
             <a href="#" class="card-link">View More &gt;</a>
           </div>
         </div>
-
-        <!-- COMPUTERS & PROGRAMS -->
         <div class="quick-card">
           <h3 class="card-title">💻 COMPUTERS & PROGRAMS</h3>
           <div class="card-info-row">
@@ -289,8 +210,6 @@
             <a href="#" class="card-link">View More &gt;</a>
           </div>
         </div>
-
-        <!-- MEETING ROOMS -->
         <div class="quick-card">
           <h3 class="card-title">🏢 MEETING ROOMS</h3>
           <div class="card-info-row">
@@ -298,8 +217,6 @@
             <a href="#" class="card-link">View More &gt;</a>
           </div>
         </div>
-
-        <!-- MAGAZINES -->
         <div class="quick-card">
           <h3 class="card-title">📰 MAGAZINES</h3>
           <div class="card-info-row">
@@ -312,7 +229,8 @@
   </main>
 
   <!-- External JS -->
-  <script src="librarianDashboardJscript_responsive.js"></script>
+  <script src="librarianDashboardJscript.js"></script>
 </body>
 </html>
+
 
