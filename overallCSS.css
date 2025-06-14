@@ -115,7 +115,7 @@
   background: white;
   padding: 0.5rem;
   border-radius: 9999px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .carousel-arrow:hover {
@@ -716,6 +716,7 @@
     padding-top: 4rem; /* Adjust for mobile topbar height */
     padding-left: 1rem;
     padding-right: 1rem;
+    align-items: center; /* Vertically center login box */
   }
   .login-box {
     margin-top: 1rem;
@@ -764,5 +765,13 @@
     padding-left: 0;
   }
 }
+
+@media (min-width: 768px) {
+  .side-nav {
+    transform: translateX(0); /* Always visible on desktop */
+  }
+}
+
+
 
 
