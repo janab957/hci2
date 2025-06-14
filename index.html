@@ -3,16 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LibraNet - Login</title>
-
-  <!-- Tailwind CSS CDN -->
+  <title>LibraNet</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#FFFFFF">
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Font Awesome CDN -->
+  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-  <!-- External CSS -->
-  <link rel="stylesheet" href="overallCSS.css" />
+  <link rel="stylesheet" href="overallCSS.css"/>
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col">
 
@@ -27,10 +25,6 @@
     </div>
     
     <div class="flex items-center space-x-4">
-      <button class="install-btn p-2 bg-[#18354a] text-white rounded-full hover:bg-[#415977] transition">
-       <i class="fa-solid fa-download"></i>
-      </button>
-      <i class="fas fa-bell"></i>
       <i class="fas fa-user-circle"></i>
     </div>
   </header>
@@ -42,80 +36,82 @@
       <span class="text-xl font-bold">LibraNet</span>
     </div>
     <nav class="flex items-center space-x-6">
-      <button class="install-btn px-4 py-2 bg-[#18354a] text-white rounded-full hover:bg-[#415977] transition">
-       <i class="fa-solid fa-download"></i> <span class="font-bold">Install LibraNet</span>
-      </button>
-      <a href="#"><i class="fas fa-bell"></i> Notifications</a>
-      <a href="#"><i class="fas fa-user-circle"></i> Login</a>
+      <a href="#"><i class="fas fa-user-circle"></i> Hello, Adrian</a>
     </nav>
   </header>
 
   <!-- Sidebar -->
   <div class="flex flex-1 pt-[48px] md:pt-[64px]">
     <aside id="sidebar" class="side-nav bg-[#61584D] px-2 py-3 w-60 min-h-screen hidden md:flex flex-col fixed left-0 top-[48px] md:top-[64px] z-40">
+      <!-- Sidebar content is hidden but color is maintained -->
+      <div class="space-y-1">
+        <!-- Empty space to maintain color -->
+      </div>
+
       <!-- Bottom section: spaced downward but not to bottom -->
-      <div class="mt-auto mb-2">
-        <a href="#" class="menu-item flex items-center gap-2 text-white px-3 py-2 rounded hover:bg-[#a6947e]">
-          <i class="fas fa-question-circle"></i>
-          <span>Help & Support</span>
-        </a>
+      <div class="space-y-1 pt-4 mt-32">
+        <!-- Empty space to maintain color -->
       </div>
     </aside>
 
     <!-- Main Content -->
     <main class="main-content flex-1 px-4 md:ml-60 md:px-6">
-      <div class="login-box">
-        <h2 class="text-center text-2xl font-semibold mb-12">Login as a Librarian</h2>
-
-        <!-- Email input -->
-        <div class="flex flex-col mb-4 w-full max-w-[650px]">
-          <div class="flex items-center">
-            <label for="email" class="label">Email:</label>
-            <input type="text" id="email" placeholder="example@Libranet.ac.ae" class="input-field" />
-          </div>
-          <p id="emailError" class="text-sm text-red-500 ml-[110px] mt-1 hidden">
-            Please enter a valid email.
-          </p>
-        </div>
-
-        <!-- Password input -->
-        <div class="flex flex-col mb-8 w-full max-w-[650px]">
-          <div class="flex items-center relative">
-            <label for="password" class="label">Password:</label>
-            <input type="password" id="password" placeholder="Enter password" class="input-field pr-10" />
-            <button type="button" id="togglePassword">
-              <i class="fas fa-eye"></i>
-            </button>
-          </div>
-          <p id="passwordError" class="text-sm text-red-500 ml-[110px] mt-1 hidden">
-            Password must be at least 8 characters.
-          </p>
-        </div>
-
-        <div class="flex justify-between items-center text-base mb-10 pl-[110px] pr-2 mt-4">
-          <label class="flex items-center gap-2">
-            <input type="checkbox" /> Remember me
-          </label>
-          <a href="#" class="link-btn text-base">Forgot Password?</a>
-        </div>
-
-        <div class="text-center mb-10 pl-16">
-          <button id="loginBtn" disabled class="btn-disabled">Login</button>
-        </div>
-
-        <p class="text-center text-base pl-16">
-          Don’t have an account? <a href="#" class="link-btn">Sign up!</a>
-        </p>
+      <!-- Search bar -->
+      <div class="search-container flex items-center space-x-2 mt-4 mb-8">
+        <input type="text" placeholder="Search" class="flex-1 md:w-1/2 px-4 py-2 border border-gray-300 rounded-full" />
+        <button class="bg-[#6D7F96] text-white px-3 py-2 rounded-full hover:bg-[#415977] transition">
+          <i class="fas fa-search"></i>
+        </button>
       </div>
+
+      <!-- Quick Access Section -->
+      <section>
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Quick Access</h2>
+
+        <div class="quick-access-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <!-- BOOKS -->
+          <div class="quick-card bg-white p-4 md:p-6 rounded-lg shadow-md">
+            <h3 class="card-title text-lg md:text-xl font-bold mb-2 text-[#61584D]">📚 BOOKS</h3>
+            <div class="card-info-row flex justify-between items-center">
+              <p class="card-sub text-gray-600">Available: 200 Books</p>
+              <a href="#" class="card-link text-[#6D7F96] hover:underline">View More &gt;</a>
+            </div>
+          </div>
+
+          <!-- COMPUTERS & PROGRAMS -->
+          <div class="quick-card bg-white p-4 md:p-6 rounded-lg shadow-md">
+            <h3 class="card-title text-lg md:text-xl font-bold mb-2 text-[#61584D]">💻 COMPUTERS & PROGRAMS</h3>
+            <div class="card-info-row flex justify-between items-center">
+              <p class="card-sub text-gray-600">Available: 8 Computers</p>
+              <a href="#" class="card-link text-[#6D7F96] hover:underline">View More &gt;</a>
+            </div>
+          </div>
+
+          <!-- MEETING ROOMS -->
+          <div class="quick-card bg-white p-4 md:p-6 rounded-lg shadow-md">
+            <h3 class="card-title text-lg md:text-xl font-bold mb-2 text-[#61584D]">🏢 MEETING ROOMS</h3>
+            <div class="card-info-row flex justify-between items-center">
+              <p class="card-sub text-gray-600">Available: 2 Rooms</p>
+              <a href="#" class="card-link text-[#6D7F96] hover:underline">View More &gt;</a>
+            </div>
+          </div>
+
+          <!-- MAGAZINES -->
+          <div class="quick-card bg-white p-4 md:p-6 rounded-lg shadow-md">
+            <h3 class="card-title text-lg md:text-xl font-bold mb-2 text-[#61584D]">📰 MAGAZINES</h3>
+            <div class="card-info-row flex justify-between items-center">
+              <p class="card-sub text-gray-600">Available: 34 Magazines</p>
+              <a href="#" class="card-link text-[#6D7F96] hover:underline">View More &gt;</a>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   </div>
 
-  <!-- External JS -->
-  <script src="librarianLoginJscript.js"></script>
+  <script src="librarianDashboardJscript.js"></script>
 </body>
 </html>
-
-
 
 
 
