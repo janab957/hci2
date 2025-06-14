@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <title>LibraNet</title>
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#FFFFFF">
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -17,7 +16,7 @@
 </head>
 <body class="bg-gray-100">
 
-  <!-- Mobile Topbar -->
+  <!-- Mobile Top Navigation (Only visible on mobile) -->
   <header class="mobile-top-nav md:hidden fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-4 py-3 bg-[#18354a] text-white shadow">
     <button id="hamburger" class="text-xl p-1">
       <i class="fas fa-bars"></i>
@@ -28,9 +27,6 @@
     </div>
     
     <div class="flex items-center space-x-3">
-      <button class="install-btn p-1.5 bg-[#18354a] text-white rounded-full hover:bg-[#415977] transition">
-       <i class="fa-solid fa-download text-sm"></i>
-      </button>
       <button id="mobile-notification-toggle" class="relative p-1">
         <i class="fas fa-bell text-sm"></i>
       </button>
@@ -38,30 +34,33 @@
     </div>
   </header>
 
-  <!-- Desktop Top Navigation -->
+  <!-- Desktop Top Navigation (Original - Completely Preserved) -->
   <header class="top-nav hidden md:flex">
     <div class="flex items-center space-x-4">
       <i class="fas fa-book-open text-2xl"></i>
-      <span class="text-xl font-bold">LibraNet</span>
+      <span class="text-xl font-bold">LibraNet  </span>
 	  <a href="#"> <i class="fas fa-home"></i> Dashboard</a>
 	  
       <!-- Categories with dropdown -->
       <div class="relative">
-        <button id="categories-btn" class="flex items-center space-x-2 px-4 py-2 text-left hover:bg-[#6D7F96] transition rounded">
-          <i class="fas fa-layer-group"></i>
-          <span>Categories</span>
+        <button id="categories-btn" class="w-full flex items-center justify-between px-4 py-2 text-left hover:bg-[#6D7F96] transition">
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-layer-group"></i>
+            <span>Categories</span>
+          </div>
         </button>
 
         <!-- Dropdown Menu -->
-        <div id="categories-dropdown" class="absolute left-0 top-full mt-1 hidden bg-[#6D7F96] text-white min-w-max rounded-md shadow-md z-20">
-          <a href="#" class="block px-4 py-2 hover:bg-[#415977] whitespace-nowrap">Books</a>
-          <a href="#" class="block px-4 py-2 hover:bg-[#415977] whitespace-nowrap">Meeting Rooms</a>
-          <a href="#" class="block px-4 py-2 hover:bg-[#415977] whitespace-nowrap">Magazines</a>
-          <a href="#" class="block px-4 py-2 hover:bg-[#415977] whitespace-nowrap">Computers & Programs</a>
+        <div id="categories-dropdown" class="absolute left-0 top-full mt-1 hidden flex-col bg-[#6D7F96] text-white w-full rounded-md shadow-md z-10">
+          <a href="#" class="block px-4 py-2 hover:bg-[#415977]">Books</a>
+          <a href="#" class="block px-4 py-2 hover:bg-[#415977]">Meeting Rooms</a>
+          <a href="#" class="block px-4 py-2 hover:bg-[#415977]">Magazines</a>
+          <a href="#" class="block px-4 py-2 hover:bg-[#415977]">Computers & Programs</a>
         </div>
       </div>
     </div>
-    <nav class="flex items-center space-x-6">
+    <nav class="space-x-6">
+      <!-- Install Button (NEW - Added to the left of notifications) -->
       <button class="install-btn px-4 py-2 bg-[#18354a] text-white rounded-full hover:bg-[#415977] transition">
        <i class="fa-solid fa-download"></i> <span class="font-bold">Install LibraNet</span>
       </button>
@@ -73,7 +72,7 @@
       <a href="#"><i class="fas fa-user-circle"></i> Hello, Adrian</a>
 
       <!-- Notification Dropdown -->
-      <div id="notification-dropdown" class="notification-dropdown hidden">
+      <div id="notification-dropdown" class="notification-dropdown hidden no-rounded">
         <div class="notification-item">
           • Book request from Ali – Gilbert Strang's Calculus textbook<br />
           <a href="#">View</a>
@@ -94,7 +93,7 @@
   </header>
 
   <!-- Mobile Notification Full Screen -->
-  <div id="mobile-notification-screen" class="mobile-notification-screen md:hidden hidden fixed inset-0 bg-white z-50">
+  <div id="mobile-notification-screen" class="mobile-notification-screen md:hidden hidden fixed inset-0 bg-white z-60">
     <div class="flex items-center justify-between p-4 bg-[#18354a] text-white">
       <button id="mobile-back-btn" class="flex items-center text-white">
         <i class="fas fa-arrow-left mr-2"></i>
@@ -108,19 +107,19 @@
       <h4 class="font-semibold text-gray-800 mb-4">New Notifications</h4>
       
       <div class="space-y-3">
-        <div class="bg-gray-50 p-3 rounded border-l-4 border-blue-500">
+        <div class="bg-[#e8dcc6] p-3 rounded border-l-4 border-blue-500">
           <p class="text-sm font-medium">• Book request from Ali – Gilbert Strang's Calculus textbook</p>
-          <a href="#" class="text-blue-600 text-sm underline mt-1 inline-block">View</a>
+          <a href="#" class="text-[#6366f1] text-sm underline mt-1 inline-block">View</a>
         </div>
         
-        <div class="bg-gray-50 p-3 rounded border-l-4 border-blue-500">
+        <div class="bg-[#e8dcc6] p-3 rounded border-l-4 border-blue-500">
           <p class="text-sm font-medium">• Room booking from Sara – Room 201</p>
-          <a href="#" class="text-blue-600 text-sm underline mt-1 inline-block">View</a>
+          <a href="#" class="text-[#6366f1] text-sm underline mt-1 inline-block">View</a>
         </div>
         
-        <div class="bg-gray-50 p-3 rounded border-l-4 border-blue-500">
+        <div class="bg-[#e8dcc6] p-3 rounded border-l-4 border-blue-500">
           <p class="text-sm font-medium">• Room booking from John – Room 204</p>
-          <a href="#" class="text-blue-600 text-sm underline mt-1 inline-block">View</a>
+          <a href="#" class="text-[#6366f1] text-sm underline mt-1 inline-block">View</a>
         </div>
       </div>
       
@@ -131,8 +130,8 @@
   </div>
 
   <!-- Mobile Sidebar Overlay -->
-  <div id="mobile-sidebar-overlay" class="mobile-sidebar-overlay md:hidden hidden fixed inset-0 bg-black bg-opacity-50 z-40">
-    <aside id="mobile-sidebar" class="mobile-sidebar bg-[#61584D] w-64 h-full transform -translate-x-full transition-transform duration-300">
+  <div id="mobile-sidebar-overlay" class="mobile-sidebar-overlay md:hidden hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+    <aside id="mobile-sidebar" class="mobile-sidebar bg-[#61584D] w-64 h-full transform -translate-x-full transition-transform duration-300 z-51">
       <div class="p-4 space-y-2">
         <a href="#" class="menu-item flex items-center justify-between bg-[#a6947e] px-3 py-3 rounded hover:bg-[#a6947e]">
           <div class="flex items-center space-x-3 text-white">
@@ -195,7 +194,7 @@
     </aside>
   </div>
 
-  <!-- Desktop Sidebar -->
+  <!-- Desktop Sidebar (Original - Completely Preserved) -->
   <aside class="side-nav bg-[#61584D] px-2 py-3 space-y-1 w-60 min-h-screen hidden md:block">
     <a href="#" class="menu-item flex items-center justify-between bg-[#a6947e] px-3 py-2 rounded hover:bg-[#a6947e]">
       <div class="flex items-center space-x-3 text-white">
@@ -256,10 +255,10 @@
     </a>
   </aside>
 
-  <!-- Main Content -->
-  <main class="main-content ml-0 md:ml-64 mt-16 md:mt-20 px-4 md:px-6 py-4 md:py-6">
+  <!-- Main Content (Original - Completely Preserved) -->
+  <main class="main-content ml-0 md:ml-64 mt-16 md:mt-16 px-4 md:px-6 py-4 md:py-8">
     <!-- Search bar -->
-    <div class="search-container mb-8 md:mb-12">
+    <div class="search-container">
       <input type="text" placeholder="Search" class="search-input" />
       <button class="search-button">
         <i class="fas fa-search"></i>
@@ -268,7 +267,7 @@
 
     <!-- Quick Access Section -->
     <section>
-      <h2 class="text-xl md:text-2xl font-bold mb-6 ml-0 md:ml-6">Quick Access</h2>
+      <h2 class="text-xl md:text-2xl font-bold ml-0 md:ml-6">Quick Access</h2>
 
       <div class="quick-access-grid">
         <!-- BOOKS -->
@@ -314,4 +313,5 @@
   <script src="librarianDashboardJscript.js"></script>
 </body>
 </html>
+
 
