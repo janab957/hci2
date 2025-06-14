@@ -9,7 +9,23 @@ body {
   overflow-y: auto;
 }
 
-/* Top navigation */
+/* Mobile Top Navigation */
+.mobile-top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #18354a;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: 48px;
+}
+
+/* Desktop Top navigation (Original) */
 .top-nav {
   position: fixed;
   top: 0;
@@ -25,7 +41,7 @@ body {
   padding: 0 1.5rem;
 }
 
-/* Sidebar */
+/* Sidebar (Original) */
 .side-nav {
   position: fixed;
   top: 4rem;
@@ -38,6 +54,42 @@ body {
   flex-direction: column;
   padding: 1.5rem;
   gap: 1rem;
+}
+
+/* Mobile Sidebar */
+.mobile-sidebar {
+  position: fixed;
+  top: 48px;
+  left: 0;
+  width: 16rem;
+  height: calc(100vh - 48px);
+  background-color: #61584D;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  gap: 1rem;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 40;
+}
+
+.mobile-sidebar.open {
+  transform: translateX(0);
+}
+
+/* Mobile Notification Dropdown */
+.mobile-notification-dropdown {
+  position: fixed;
+  top: 48px;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 40;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
 }
 
 .side-nav a {
@@ -236,6 +288,25 @@ body {
   opacity: 1;
 }
 
+/* Install Button Styling */
+.install-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #18354a;
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: bold;
+}
+
+.install-btn:hover {
+  background-color: #415977;
+}
+
 /* Mobile specific styles */
 @media (max-width: 768px) {
   body {
@@ -252,13 +323,7 @@ body {
   }
   
   .side-nav {
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    z-index: 40;
-  }
-  
-  .side-nav.open {
-    transform: translateX(0);
+    display: none;
   }
   
   .search-container {
@@ -292,6 +357,31 @@ body {
   .card-link {
     margin-top: 1rem;
   }
+
+  /* Mobile install button */
+  .install-btn {
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .install-btn span {
+    display: none;
+  }
+}
+
+/* Desktop specific styles */
+@media (min-width: 769px) {
+  .mobile-top-nav {
+    display: none;
+  }
+  
+  .mobile-sidebar {
+    display: none;
+  }
+  
+  .mobile-notification-dropdown {
+    display: none;
+  }
 }
 
 /* Tablet styles */
@@ -316,5 +406,6 @@ body {
     margin-left: 2rem;
   }
 }
+
 
 
