@@ -5,28 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LibraNet</title>
 
-  <!-- Tailwind CSS CDN -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Font Awesome CDN -->
+  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="overallCSS.css" />
 </head>
 <body class="bg-gray-100 text-white">
+
   <!-- Top Navigation -->
   <header class="top-nav flex items-center justify-between bg-[#1F2937] p-4 fixed top-0 left-0 right-0 z-40">
     <div class="flex items-center space-x-4">
-      <!-- Hamburger for Mobile -->
       <button id="hamburger" class="text-white text-xl md:hidden">
         <i class="fas fa-bars"></i>
       </button>
-      <!-- Logo -->
       <i class="fas fa-book-open text-2xl"></i>
       <span class="text-xl font-bold">LibraNet</span>
     </div>
-    <!-- Right Side Icons -->
+
     <div class="flex items-center space-x-4">
-      <!-- Install (mobile icon only) -->
+      <!-- Install Buttons -->
       <button class="install-btn hidden md:inline-block text-sm text-white border px-3 py-1 rounded-md">
         Install LibraNet
       </button>
@@ -36,7 +35,7 @@
 
       <!-- Categories Dropdown -->
       <div class="relative">
-        <button id="categories-btn" class="text-sm bg-[#374151] px-3 py-1 rounded-md">Categories</button>
+        <button id="categories-btn" type="button" class="text-sm bg-[#374151] px-3 py-1 rounded-md">Categories</button>
         <div id="categories-dropdown" class="hidden absolute right-0 mt-2 w-40 bg-white text-black shadow-lg rounded-md z-50">
           <a href="#" class="block px-4 py-2 hover:bg-gray-100">Option 1</a>
           <a href="#" class="block px-4 py-2 hover:bg-gray-100">Option 2</a>
@@ -45,7 +44,7 @@
 
       <!-- Notification Dropdown -->
       <div class="relative">
-        <button id="notification-toggle" class="text-white text-xl">
+        <button id="notification-toggle" type="button" class="text-white text-xl">
           <i class="fas fa-bell"></i>
         </button>
         <div id="notification-dropdown" class="hidden absolute right-0 mt-2 w-64 bg-white text-black shadow-lg rounded-md z-50">
@@ -56,18 +55,17 @@
         </div>
       </div>
 
-      <!-- Hello User -->
       <span class="ml-2 text-sm hidden sm:inline">Hello, Adrian</span>
     </div>
   </header>
 
-  <!-- Sidebar -->
+  <!-- Sidebar Navigation -->
   <div class="side-nav hidden md:block fixed top-16 left-0 w-64 h-full bg-[#374151] p-4 space-y-4 text-sm z-30">
     <a href="#">Dashboard</a>
     <a href="#">Resources</a>
     <a href="#">Booking</a>
     <a href="#">Waitlist</a>
-    <hr class="my-2 border-gray-500" />
+    <hr class="my-4 border-gray-500" />
     <a href="#">My Profile</a>
     <a href="#">Settings</a>
     <a href="#">Help</a>
@@ -76,12 +74,11 @@
 
   <!-- Main Content -->
   <main class="main-content md:ml-64 mt-24 p-4">
-    <!-- Search Bar -->
     <div class="search-container mb-6">
       <input type="text" placeholder="Search..." class="w-full p-2 rounded-md text-black" />
     </div>
 
-    <!-- Quick Access Section -->
+    <!-- Quick Access -->
     <section class="quick-access mt-6">
       <h2 class="text-lg mb-4 text-black">Quick Access</h2>
       <div class="quick-access-grid grid md:grid-cols-2 gap-4">
