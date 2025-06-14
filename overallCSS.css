@@ -1,3 +1,5 @@
+/* ORIGINAL DESKTOP STYLES - COMPLETELY PRESERVED */
+
 /* Top navigation */
 .top-nav {
   position: fixed;
@@ -147,7 +149,6 @@
   margin-left: 2.5rem; /* Adjust this value to control how far it shifts */
 }
 
-
 /* Input fields */
 .input-field {
   flex: 1;
@@ -186,7 +187,6 @@
   font-size: 1rem;
 }
 
-
 /* Toggle Password Button Styling */
 #togglePassword {
   position: absolute;
@@ -200,7 +200,6 @@
   color: #6b7280; /* Tailwind gray-500 */
   padding: 0;
 }
-
 
 /* Enabled Login button */
 .btn-enabled {
@@ -222,7 +221,6 @@
   flex-grow: 0.75;
 }
 
-
 .quick-access-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -230,7 +228,6 @@
   margin-left:3rem;
   gap: 3rem ;
   margin-top: 3rem;
-  
 }
 
 .quick-card {
@@ -250,7 +247,10 @@
 
 .card-sub {
   color: #333;
-  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 0;
+  margin-top: 2.3rem;
 }
 
 .card-link {
@@ -269,14 +269,6 @@
   align-items: center;
 }
 
-.card-sub {
-  color: #333;
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin-bottom: 0;
-  margin-top: 2.3rem;
-}
-
 .search-container {
   width: 600px;
   margin: 1rem auto;
@@ -293,7 +285,6 @@
   font-size: 0.9rem;
   color: #333;
   outline: none;
-
 }
 
 .search-button {
@@ -316,7 +307,6 @@
 .search-input:hover {
   box-shadow: 0 0 0 4px rgba(85, 75, 142, 0.1);
 }
-
 
 /* Notification Dropdown Styling - Match Screenshot */
 .notification-dropdown {
@@ -360,7 +350,6 @@
   font-weight: 500;
   text-decoration: underline;
 }
-
 
 .notification-button.active {
   background-color: #415977; /* or any highlight color you want */
@@ -412,7 +401,6 @@
   min-width: 150px;
   max-height: 200px;
   overflow-y: auto;
-  
 }
 
 .dropdown-option {
@@ -554,7 +542,6 @@
   scrollbar-color: #cbd5e1 #f1f5f9;
 }
 
-
 /* Tab Button Styling */
 .tab-button {
   transition: all 0.2s ease-in-out;
@@ -662,8 +649,123 @@
   color: #111827;
 }
 
+/* Install Button Styling */
+.install-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #18354a;
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: bold;
+}
 
-/* Responsive Design */
+.install-btn:hover {
+  background-color: #415977;
+}
+
+/* NEW MOBILE-ONLY STYLES */
+
+/* Mobile Top Navigation */
+.mobile-top-nav {
+  height: 48px;
+}
+
+/* Mobile Notification Full Screen */
+.mobile-notification-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  z-index: 60;
+}
+
+/* Mobile Sidebar Overlay */
+.mobile-sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 50;
+}
+
+.mobile-sidebar {
+  position: fixed;
+  top: 48px;
+  left: 0;
+  width: 16rem;
+  height: calc(100vh - 48px);
+  background-color: #61584D;
+  color: white;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 51;
+}
+
+.mobile-sidebar.open {
+  transform: translateX(0);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    margin-top: 3rem;
+    padding: 1rem;
+  }
+  
+  .search-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 1rem 0;
+  }
+  
+  .quick-access-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+  
+  .quick-card {
+    width: 100%;
+    min-height: auto;
+    padding: 1rem;
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+  }
+  
+  .card-sub {
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .card-link {
+    margin-top: 1rem;
+  }
+
+  /* Mobile install button */
+  .install-btn {
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .install-btn span {
+    display: none;
+  }
+}
+
+/* Original Responsive Design - PRESERVED */
 @media (max-width: 768px) {
   .table-container {
     max-height: 400px;
@@ -678,49 +780,9 @@
     padding: 0.5rem 1rem;
     font-size: 0.875rem;
   }
-
-  /* Adjust main content for mobile */
-  .main-content {
-    margin-left: 0;
-    margin-top: 4rem; /* Height of mobile topbar */
-    padding: 1rem;
-  }
-
-  /* Adjust quick access grid for mobile */
-  .quick-access-grid {
-    grid-template-columns: 1fr;
-    margin-left: 0;
-    gap: 1rem;
-  }
-
-  .quick-card {
-    width: 100%;
-  }
-
-  /* Hide desktop sidebar on mobile */
-  .side-nav {
-    display: none;
-    position: fixed;
-    top: 4rem;
-    left: 0;
-    width: 16rem;
-    height: calc(100vh - 4rem);
-    z-index: 40;
-  }
-
-  /* Show sidebar when hamburger is clicked */
-  .side-nav.flex {
-    display: flex;
-  }
-
-  /* Adjust notification dropdown for mobile */
-  .notification-dropdown {
-    left: auto;
-    right: 0;
-    width: 90%;
-    max-width: 320px;
-  }
 }
+
+
 
 
 
