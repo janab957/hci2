@@ -51,8 +51,8 @@
 /* Main Content */
 .main-content {
   margin-left: 16rem;
-  margin-top: 4rem;
-  padding: 1.5rem 1.5rem;
+  margin-top: 6rem;
+  padding: 1.5rem;
 }
 
 /* Search Bar */
@@ -218,16 +218,16 @@
 }
 
 .sidebar-spacer {
-  flex-grow: 1;
+  flex-grow: 0.75;
 }
 
 .quick-access-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2rem;
-  margin-left: 3rem;
-  gap: 3rem;
-  margin-top: 1rem;
+  margin-left:3rem;
+  gap: 3rem ;
+  margin-top: 3rem;
 }
 
 .quick-card {
@@ -271,7 +271,7 @@
 
 .search-container {
   width: 600px;
-  margin: 1rem auto 2.5rem auto;
+  margin: 1rem auto;
   position: relative;
 }
 
@@ -313,6 +313,7 @@
   position: absolute;
   top: 3.83rem;
   right: 0;
+  left: 1025px;
   width: 320px;
   background-color: white;
   border: 1px solid #ccc;
@@ -648,7 +649,7 @@
   color: #111827;
 }
 
-/* Install Button Styling */
+/* Install Button Styling - NEW */
 .install-btn {
   display: inline-flex;
   align-items: center;
@@ -769,42 +770,20 @@
     font-size: 0.9rem;
     color: #6366f1;
   }
-
-  /* Mobile install button */
-  .install-btn {
-    padding: 0.5rem;
-    font-size: 0.875rem;
-  }
-
-  .install-btn span {
-    display: none;
-  }
-
-  /* Mobile notification cards styling */
-  .mobile-notification-screen .bg-gray-50 {
-    background-color: #e8dcc6 !important;
-    border: none;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-  }
-
-  .mobile-notification-screen .text-blue-600 {
-    color: #6366f1 !important;
-  }
 }
 
 /* Desktop specific styles */
 @media (min-width: 769px) {
   .mobile-top-nav {
-    display: none;
+    display: none !important;
   }
   
   .mobile-sidebar {
-    display: none;
+    display: none !important;
   }
   
   .mobile-notification-screen {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -814,9 +793,16 @@
     max-height: 400px;
   }
   
+  .search-container {
+    max-width: 100%;
+    margin: 0 1rem;
+  }
+  
   .tab-button {
     padding: 0.5rem 1rem;
     font-size: 0.875rem;
   }
 }
+
+
 
