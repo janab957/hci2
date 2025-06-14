@@ -51,8 +51,8 @@
 /* Main Content */
 .main-content {
   margin-left: 16rem;
-  margin-top: 6rem;
-  padding: 1.5rem;
+  margin-top: 4rem;
+  padding: 2rem 1.5rem;
 }
 
 /* Search Bar */
@@ -225,9 +225,9 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2rem;
-  margin-left:3rem;
-  gap: 3rem ;
-  margin-top: 3rem;
+  margin-left: 3rem;
+  gap: 3rem;
+  margin-top: 2rem;
 }
 
 .quick-card {
@@ -271,7 +271,7 @@
 
 .search-container {
   width: 600px;
-  margin: 1rem auto;
+  margin: 1rem auto 3rem auto;
   position: relative;
 }
 
@@ -313,7 +313,6 @@
   position: absolute;
   top: 3.83rem;
   right: 0;
-  left: 1025px;
   width: 320px;
   background-color: white;
   border: 1px solid #ccc;
@@ -672,7 +671,7 @@
 
 /* Mobile Top Navigation */
 .mobile-top-nav {
-  height: 48px;
+  height: 52px;
 }
 
 /* Mobile Notification Full Screen */
@@ -699,10 +698,10 @@
 
 .mobile-sidebar {
   position: fixed;
-  top: 48px;
+  top: 52px;
   left: 0;
   width: 16rem;
-  height: calc(100vh - 48px);
+  height: calc(100vh - 52px);
   background-color: #61584D;
   color: white;
   transform: translateX(-100%);
@@ -718,14 +717,22 @@
 @media (max-width: 768px) {
   .main-content {
     margin-left: 0;
-    margin-top: 3rem;
+    margin-top: 52px;
     padding: 1rem;
   }
   
   .search-container {
     width: 100%;
     max-width: 100%;
-    margin: 0 0 1rem 0;
+    margin: 0 0 1.5rem 0;
+    padding: 0 1rem;
+  }
+  
+  .search-input {
+    background-color: #f5f5f5;
+    border-radius: 25px;
+    padding: 12px 40px 12px 16px;
+    font-size: 14px;
   }
   
   .quick-access-grid {
@@ -733,25 +740,34 @@
     gap: 1rem;
     margin-left: 0;
     margin-top: 1rem;
+    padding: 0 1rem;
   }
   
   .quick-card {
     width: 100%;
     min-height: auto;
-    padding: 1rem;
+    padding: 1.25rem;
+    background-color: #e8dcc6;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   .card-title {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
   }
   
   .card-sub {
-    font-size: 1rem;
-    margin-top: 1rem;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    color: #666;
   }
   
   .card-link {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #6366f1;
   }
 
   /* Mobile install button */
@@ -763,6 +779,33 @@
   .install-btn span {
     display: none;
   }
+
+  /* Mobile notification cards styling */
+  .mobile-notification-screen .bg-gray-50 {
+    background-color: #e8dcc6 !important;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+
+  .mobile-notification-screen .text-blue-600 {
+    color: #6366f1 !important;
+  }
+}
+
+/* Desktop specific styles */
+@media (min-width: 769px) {
+  .mobile-top-nav {
+    display: none;
+  }
+  
+  .mobile-sidebar {
+    display: none;
+  }
+  
+  .mobile-notification-screen {
+    display: none;
+  }
 }
 
 /* Original Responsive Design - PRESERVED */
@@ -771,16 +814,12 @@
     max-height: 400px;
   }
   
-  .search-container {
-    max-width: 100%;
-    margin: 0 1rem;
-  }
-  
   .tab-button {
     padding: 0.5rem 1rem;
     font-size: 0.875rem;
   }
 }
+
 
 
 
