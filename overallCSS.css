@@ -1,4 +1,5 @@
 @media (max-width: 768px) {
+  /* Sidebar should slide in on mobile */
   .side-nav {
     position: fixed;
     top: 4rem;
@@ -10,14 +11,17 @@
     z-index: 50;
   }
 
+  /* Adjust spacing between search bar and quick access */
   .quick-access {
     margin-top: 1rem;
   }
 
+  /* Grid layout turns to 1 column on mobile */
   .quick-access-grid {
     grid-template-columns: 1fr;
   }
 
+  /* Remove margin-left on mobile */
   .main-content {
     margin-left: 0;
     margin-top: 5rem;
