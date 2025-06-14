@@ -89,3 +89,39 @@ loginBtn.addEventListener("click", (e) => {
     window.location.href = "librarianDashboard.html"; // <-- change this to your dashboard file
   }, 500); // 0.5 second delay
 });
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const hamburger = document.getElementById("hamburger");
+  const sidebar = document.getElementById("sidebar");
+  const mainContent = document.querySelector(".main-content");
+
+  hamburger.addEventListener("click", function() {
+    sidebar.classList.toggle("hidden");
+    if (sidebar.classList.contains("hidden")) {
+      mainContent.classList.remove("md:ml-60");
+    } else {
+      mainContent.classList.add("md:ml-60");
+    }
+  });
+
+  // Close sidebar when clicking outside on mobile
+  document.addEventListener("click", function(event) {
+    if (window.innerWidth < 768 && !sidebar.contains(event.target) && !hamburger.contains(event.target) && !sidebar.classList.contains("hidden")) {
+      sidebar.classList.add("hidden");
+      mainContent.classList.remove("md:ml-60");
+    }
+  });
+
+  // Adjust main content margin on resize
+  window.addEventListener("resize", function() {
+    if (window.innerWidth >= 768) {
+      sidebar.classList.remove("hidden");
+      mainContent.classList.add("md:ml-60");
+    } else {
+      sidebar.classList.add("hidden");
+      mainContent.classList.remove("md:ml-60");
+    }
+  });
+});
