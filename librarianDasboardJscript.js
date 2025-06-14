@@ -2,10 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // ORIGINAL DESKTOP FUNCTIONALITY - COMPLETELY PRESERVED
   const notificationToggle = document.getElementById("notification-toggle");
   const notificationDropdown = document.getElementById("notification-dropdown");
-
   const categoriesBtn = document.getElementById("categories-btn");
   const categoriesDropdown = document.getElementById("categories-dropdown");
-
   const bookingRequests = document.getElementById("booking-requests");
 
   // Desktop Notifications toggle - ORIGINAL CODE
@@ -87,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (hamburger && mobileSidebarOverlay && mobileSidebar) {
     hamburger.addEventListener("click", function (e) {
       e.stopPropagation();
+      console.log("Hamburger clicked"); // Debug log
       mobileSidebarOverlay.classList.remove("hidden");
       mobileSidebar.classList.add("open");
       
@@ -99,6 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Close mobile sidebar when clicking overlay
     mobileSidebarOverlay.addEventListener("click", function (e) {
       if (e.target === mobileSidebarOverlay) {
+        console.log("Overlay clicked"); // Debug log
         mobileSidebarOverlay.classList.add("hidden");
         mobileSidebar.classList.remove("open");
       }
@@ -109,6 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (mobileNotificationToggle && mobileNotificationScreen) {
     mobileNotificationToggle.addEventListener("click", function (e) {
       e.stopPropagation();
+      console.log("Mobile notification clicked"); // Debug log
       mobileNotificationScreen.classList.remove("hidden");
       
       // Close mobile sidebar if open
@@ -122,6 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Mobile back button functionality
   if (mobileBackBtn && mobileNotificationScreen) {
     mobileBackBtn.addEventListener("click", function () {
+      console.log("Back button clicked"); // Debug log
       mobileNotificationScreen.classList.add("hidden");
     });
   }
@@ -200,5 +202,15 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   });
+
+  // Debug: Log when DOM is loaded
+  console.log("DOM loaded, mobile elements:", {
+    hamburger: !!hamburger,
+    mobileSidebarOverlay: !!mobileSidebarOverlay,
+    mobileSidebar: !!mobileSidebar,
+    mobileNotificationToggle: !!mobileNotificationToggle,
+    mobileNotificationScreen: !!mobileNotificationScreen
+  });
 });
+
 
