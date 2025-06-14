@@ -18,11 +18,18 @@
 
   <!-- Mobile Topbar -->
   <header class="top-nav flex justify-between items-center px-4 py-2 bg-[#18354a] text-white shadow md:hidden fixed top-0 left-0 right-0 z-50">
+    <button id="hamburger" class="text-2xl">
+      <i class="fas fa-bars"></i>
+    </button>
     <div class="flex items-center space-x-2">
       <i class="fas fa-book-open text-xl"></i>
       <span class="font-bold">LibraNet</span>
     </div>
+    
     <div class="flex items-center space-x-4">
+      <button class="install-btn p-2 bg-[#18354a] text-white rounded-full hover:bg-[#415977] transition">
+       <i class="fa-solid fa-download"></i>
+      </button>
       <i class="fas fa-user-circle"></i>
     </div>
   </header>
@@ -34,15 +41,19 @@
       <span class="text-xl font-bold">LibraNet</span>
     </div>
     <nav class="space-x-6">
-      <a href="#" class="text-gray-400"><i class="fas fa-bell"></i> Notifications</a>
-      <a href="#"><i class="fas fa-user-circle"></i> Login</a>
+      <a href="#"><i class="fas fa-user-circle"></i></a>
     </nav>
   </header>
 
   <div class="flex flex-1 pt-[48px] md:pt-[64px]">
     <!-- Sidebar -->
-    <aside id="sidebar" class="side-nav bg-[#61584D] px-2 py-3 w-60 min-h-screen hidden md:flex flex-col fixed left-0 top-[48px] md:top-[64px] z-40">
-      <!-- Empty sidebar, just for color -->
+    <aside id="sidebar" class="side-nav bg-[#61584D] px-2 py-3 w-60 min-h-screen hidden flex-col fixed left-0 top-[48px] md:top-[64px] z-40">
+      <div class="mt-auto mb-2 ml-0.3">
+        <a href="#" class="flex items-center gap-2 text-white">
+          <i class="fas fa-question-circle"></i>
+          Help & Support
+        </a>
+      </div>
     </aside>
 
     <!-- Main Content -->
