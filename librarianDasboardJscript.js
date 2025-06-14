@@ -233,10 +233,3 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
-
-
-  console.log("All event listeners attached successfully");
-});
-
-
