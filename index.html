@@ -1,171 +1,121 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>LibraNet</title>
-<!-- Tailwind CSS CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
-<!-- Font Awesome CDN -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
-<!-- External CSS -->
-<link href="overallCSS.css" rel="stylesheet"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LibraNet</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="overallCSS.css" />
 </head>
 <body class="bg-gray-100">
-<!-- Top Navigation -->
-<header class="top-nav">
-<div class="flex items-center space-x-4">
-<i class="fas fa-book-open text-2xl"></i>
-<span class="text-xl font-bold">LibraNet  </span>
-<a href="#"> <i class="fas fa-home"></i> Dashboard</a>
-<!-- Categories with dropdown -->
-<div class="relative">
-<button class="w-full flex items-center justify-between px-4 py-2 text-left hover:bg-[#6D7F96] transition" id="categories-btn">
-<div class="flex items-center space-x-2">
-<i class="fas fa-layer-group"></i>
-<span>Categories</span>
-</div>
-</button>
-<!-- Dropdown Menu -->
-<div class="absolute left-0 top-full mt-1 hidden flex-col bg-[#6D7F96] text-white w-full rounded-md shadow-md z-10" id="categories-dropdown">
-<a class="block px-4 py-2 hover:bg-[#415977]" href="#">Books</a>
-<a class="block px-4 py-2 hover:bg-[#415977]" href="#">Meeting Rooms</a>
-<a class="block px-4 py-2 hover:bg-[#415977]" href="#">Magazines</a>
-<a class="block px-4 py-2 hover:bg-[#415977]" href="#">Computers &amp; Programs</a>
-</div>
-</div>
-</div>
-<nav class="space-x-6">
-<a class="relative px-4 py-2 hover:bg-[#6D7F96] text-white rounded transition" href="javascript:void(0);" id="notification-toggle">
-<i class="fas fa-bell"></i> Notifications
-</a>
-<a href="#"><i class="fas fa-user-circle"></i> Hello, Adrian</a>
-<!-- Notification Dropdown -->
-<div class="notification-dropdown hidden no-rounded" id="notification-dropdown">
-<div class="notification-item">
-    • Book request from Ali – Gilbert Strang's Calculus textbook<br/>
-<a href="#">View</a>
-</div>
-<div class="notification-item">
-    • Room booking from Sara – Room 201<br/>
-<a href="#">View</a>
-</div>
-<div class="notification-item">
-    • Room booking from John – Room 204<br/>
-<a href="#">View</a>
-</div>
-<div class="notification-footer">
-<a href="#">See All Requests &gt;</a>
-</div>
-</div>
-</nav>
-<button aria-label="Install App" class="install-btn p-2 text-white rounded-full hover:bg-[#415977] transition md:hidden"><i class="fa-solid fa-download"></i></button><button class="install-btn hidden md:inline-flex items-center px-4 py-2 bg-[#18354a] text-white rounded-full hover:bg-[#415977] transition" style="margin-left: 1rem;"><i class="fa-solid fa-download" style="margin-right: 0.5rem;"></i>Install LibraNet</button></header>
-<!-- Sidebar -->
-<aside class="side-nav bg-[#61584D] px-2 py-3 space-y-1 w-60 min-h-screen">
-<a class="menu-item flex items-center justify-between bg-[#a6947e] px-3 py-2 rounded hover:bg-[#a6947e]" href="#">
-<div class="flex items-center space-x-3 text-white">
-<i class="fas fa-home"></i>
-<span>Dashboard</span>
-</div>
-<i class="fas fa-chevron-right text-sm text-white arrow"></i>
-</a>
-<a class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]" href="#">
-<div class="flex items-center space-x-3 text-white">
-<i class="fas fa-file-alt"></i>
-<span>Resources Overview</span>
-</div>
-<i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
-</a>
-<a class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]" href="#" id="booking-requests">
-<div class="flex items-center space-x-3 text-white">
-<i class="fas fa-clipboard-check"></i>
-<span>Booking Requests</span>
-</div>
-<i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
-</a>
-<a class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]" href="#">
-<div class="flex items-center space-x-3 text-white">
-<i class="fas fa-hourglass-half"></i>
-<span>Waitlist</span>
-</div>
-<i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
-</a>
-<div class="sidebar-spacer"></div>
-<a class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]" href="#">
-<div class="flex items-center space-x-3 text-white">
-<i class="fas fa-user"></i>
-<span>My Profile</span>
-</div>
-<i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
-</a>
-<a class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]" href="#">
-<div class="flex items-center space-x-3 text-white">
-<i class="fas fa-cog"></i>
-<span>Settings</span>
-</div>
-<i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
-</a>
-<a class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]" href="#">
-<div class="flex items-center space-x-3 text-white">
-<i class="fas fa-question-circle"></i>
-<span>Help &amp; Support</span>
-</div>
-<i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
-</a>
-</aside>
-<!-- Main Content -->
-<main class="main-content ml-64 mt-16 px-6 py-8">
-<!-- Search bar -->
-<div class="search-container">
-<input class="search-input" placeholder="Search" type="text"/>
-<button class="search-button">
-<i class="fas fa-search"></i>
-</button>
-</div>
-<!-- Quick Access Section -->
-<section>
-<h2 class="text-2xl font-bold ml-6">Quick Access</h2>
-<div class="quick-access-grid">
-<!-- BOOKS -->
-<div class="quick-card">
-<h3 class="card-title">📚 BOOKS</h3>
-<div class="card-info-row">
-<p class="card-sub">Available: 200 Books</p>
-<a class="card-link" href="#">View More &gt;</a>
-</div>
-</div>
-<!-- COMPUTERS & PROGRAMS -->
-<div class="quick-card">
-<h3 class="card-title">💻 COMPUTERS &amp; PROGRAMS</h3>
-<div class="card-info-row">
-<p class="card-sub">Available: 8 Computers</p>
-<a class="card-link" href="#">View More &gt;</a>
-</div>
-</div>
-<!-- MEETING ROOMS -->
-<div class="quick-card">
-<h3 class="card-title">🏢 MEETING ROOMS</h3>
-<div class="card-info-row">
-<p class="card-sub">Available: 2 Rooms</p>
-<a class="card-link" href="#">View More &gt;</a>
-</div>
-</div>
-<!-- MAGAZINES -->
-<div class="quick-card">
-<h3 class="card-title">📰 MAGAZINES</h3>
-<div class="card-info-row">
-<p class="card-sub">Available: 34 Magazines</p>
-<a class="card-link" href="#">View More &gt;</a>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- External JS -->
-<script src="librarianDashboardJscript.js"></script>
+
+  <!-- Top Navigation -->
+  <header class="top-nav">
+    <button id="hamburger" class="text-white text-xl md:hidden mr-4" aria-label="Toggle Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="flex items-center space-x-4">
+      <i class="fas fa-book-open text-2xl"></i>
+      <span class="text-xl font-bold">LibraNet</span>
+      <a href="#"><i class="fas fa-home"></i> Dashboard</a>
+
+      <!-- Categories Dropdown -->
+      <div class="relative">
+        <button id="categories-btn" class="w-full flex items-center justify-between px-4 py-2 text-left hover:bg-[#6D7F96] transition">
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-layer-group"></i>
+            <span>Categories</span>
+          </div>
+        </button>
+        <div id="categories-dropdown" class="absolute left-0 top-full mt-1 hidden flex-col bg-[#6D7F96] text-white w-full rounded-md shadow-md z-10">
+          <a href="#" class="block px-4 py-2 hover:bg-[#415977]">Books</a>
+          <a href="#" class="block px-4 py-2 hover:bg-[#415977]">Meeting Rooms</a>
+          <a href="#" class="block px-4 py-2 hover:bg-[#415977]">Magazines</a>
+          <a href="#" class="block px-4 py-2 hover:bg-[#415977]">Computers & Programs</a>
+        </div>
+      </div>
+    </div>
+
+    <nav class="space-x-6 flex items-center">
+      <button class="install-btn hidden md:inline-flex items-center px-4 py-2 bg-[#18354a] text-white rounded-full hover:bg-[#415977] transition" style="margin-left: 1rem;">
+        <i class="fa-solid fa-download" style="margin-right: 0.5rem;"></i>Install LibraNet
+      </button>
+
+      <button class="install-btn p-2 text-white rounded-full hover:bg-[#415977] transition md:hidden" aria-label="Install App">
+        <i class="fa-solid fa-download"></i>
+      </button>
+
+      <a href="javascript:void(0);" id="notification-toggle" class="relative px-4 py-2 hover:bg-[#6D7F96] text-white rounded transition">
+        <i class="fas fa-bell"></i> Notifications
+      </a>
+      <a href="#"><i class="fas fa-user-circle"></i> Hello, Adrian</a>
+    </nav>
+
+    <!-- Notification Dropdown -->
+    <div id="notification-dropdown" class="notification-dropdown hidden no-rounded">
+      <div class="notification-item">• Book request from Ali – Gilbert Strang's Calculus textbook<br /><a href="#">View</a></div>
+      <div class="notification-item">• Room booking from Sara – Room 201<br /><a href="#">View</a></div>
+      <div class="notification-item">• Room booking from John – Room 204<br /><a href="#">View</a></div>
+      <div class="notification-footer"><a href="#">See All Requests &gt;</a></div>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <aside class="side-nav bg-[#61584D] px-2 py-3 space-y-1 w-60 min-h-screen">
+    <a href="#" class="menu-item flex items-center justify-between bg-[#a6947e] px-3 py-2 rounded hover:bg-[#a6947e]">
+      <div class="flex items-center space-x-3 text-white"><i class="fas fa-home"></i><span>Dashboard</span></div>
+      <i class="fas fa-chevron-right text-sm text-white arrow"></i>
+    </a>
+    <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+      <div class="flex items-center space-x-3 text-white"><i class="fas fa-file-alt"></i><span>Resources Overview</span></div>
+      <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
+    </a>
+    <a id="booking-requests" href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+      <div class="flex items-center space-x-3 text-white"><i class="fas fa-clipboard-check"></i><span>Booking Requests</span></div>
+      <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
+    </a>
+    <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+      <div class="flex items-center space-x-3 text-white"><i class="fas fa-hourglass-half"></i><span>Waitlist</span></div>
+      <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
+    </a>
+    <div class="sidebar-spacer"></div>
+    <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+      <div class="flex items-center space-x-3 text-white"><i class="fas fa-user"></i><span>My Profile</span></div>
+      <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
+    </a>
+    <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+      <div class="flex items-center space-x-3 text-white"><i class="fas fa-cog"></i><span>Settings</span></div>
+      <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
+    </a>
+    <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+      <div class="flex items-center space-x-3 text-white"><i class="fas fa-question-circle"></i><span>Help & Support</span></div>
+      <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
+    </a>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content ml-64 mt-16 px-6 py-8">
+    <div class="search-container">
+      <input type="text" placeholder="Search" class="search-input" />
+      <button class="search-button"><i class="fas fa-search"></i></button>
+    </div>
+
+    <section>
+      <h2 class="text-2xl font-bold ml-6">Quick Access</h2>
+      <div class="quick-access-grid">
+        <div class="quick-card"><h3 class="card-title">📚 BOOKS</h3><div class="card-info-row"><p class="card-sub">Available: 200 Books</p><a href="#" class="card-link">View More &gt;</a></div></div>
+        <div class="quick-card"><h3 class="card-title">💻 COMPUTERS & PROGRAMS</h3><div class="card-info-row"><p class="card-sub">Available: 8 Computers</p><a href="#" class="card-link">View More &gt;</a></div></div>
+        <div class="quick-card"><h3 class="card-title">🏢 MEETING ROOMS</h3><div class="card-info-row"><p class="card-sub">Available: 2 Rooms</p><a href="#" class="card-link">View More &gt;</a></div></div>
+        <div class="quick-card"><h3 class="card-title">📰 MAGAZINES</h3><div class="card-info-row"><p class="card-sub">Available: 34 Magazines</p><a href="#" class="card-link">View More &gt;</a></div></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="librarianDashboardJscript.js"></script>
 </body>
 </html>
-
 
 
