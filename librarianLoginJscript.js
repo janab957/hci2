@@ -90,41 +90,67 @@ loginBtn.addEventListener("click", (e) => {
   }, 500); // 0.5 second delay
 });
 
-
-
-document.addEventListener("DOMContentLoaded", function() {
+// Hamburger menu functionality for mobile sidebar (matching studentDashboard)
+document.addEventListener("DOMContentLoaded", function () {
   const hamburger = document.getElementById("hamburger");
   const sidebar = document.getElementById("sidebar");
-  const mainContent = document.querySelector(".main-content");
 
-  hamburger.addEventListener("click", function() {
-    sidebar.classList.toggle("hidden");
-    if (sidebar.classList.contains("hidden")) {
-      mainContent.classList.remove("md:ml-60");
-    } else {
-      mainContent.classList.add("md:ml-60");
-    }
-  });
+  if (hamburger && sidebar) {
+    hamburger.addEventListener("click", function () {
+      sidebar.classList.toggle("hidden");
+    });
+  }
+});
 
-  // Close sidebar when clicking outside on mobile
-  document.addEventListener("click", function(event) {
-    if (window.innerWidth < 768 && !sidebar.contains(event.target) && !hamburger.contains(event.target) && !sidebar.classList.contains("hidden")) {
-      sidebar.classList.add("hidden");
-      mainContent.classList.remove("md:ml-60");
-    }
-  });
+// PWA Install functionality (matching studentDashboard)
+let deferredPrompt;
 
-  // Adjust main content margin on resize
-  window.addEventListener("resize", function() {
-    if (window.innerWidth >= 768) {
-      sidebar.classList.remove("hidden");
-      mainContent.classList.add("md:ml-60");
-    } else {
-      sidebar.classList.add("hidden");
-      mainContent.classList.remove("md:ml-60");
-    }
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent the mini-infobar from appearing on mobile
+  e.preventDefault();
+  // Save the event for later use
+  deferredPrompt = e;
+
+  // Show all install buttons (in case they were hidden)
+  document.querySelectorAll('.install-btn').forEach(btn => {
+    btn.style.display = 'inline-block'; // or 'flex' depending on your button styling
+    btn.disabled = false; // enable button if disabled
   });
 });
+
+document.querySelectorAll('.install-btn').forEach(button => {
+  // Initially hide or disable install buttons until prompt is available
+  button.style.display = 'none';
+  button.disabled = true;
+
+  button.addEventListener('click', async () => {
+    if (!deferredPrompt) {
+      alert('Install prompt not available yet. Please try again later.');
+      return;
+    }
+    // Show the install prompt
+    deferredPrompt.prompt();
+
+    // Wait for the user's choice
+    const choiceResult = await deferredPrompt.userChoice;
+
+    if (choiceResult.outcome === 'accepted') {
+      console.log('User accepted the install prompt');
+    } else {
+      console.log('User dismissed the install prompt');
+    }
+
+    // Clear the saved prompt since it can only be used once
+    deferredPrompt = null;
+
+    // Hide install buttons after prompt
+    document.querySelectorAll('.install-btn').forEach(btn => {
+      btn.style.display = 'none';
+      btn.disabled = true;
+    });
+  });
+});
+
 
 
 
