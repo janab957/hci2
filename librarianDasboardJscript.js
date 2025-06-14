@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("DOM Content Loaded - Starting initialization");
-
   // ORIGINAL DESKTOP FUNCTIONALITY - COMPLETELY PRESERVED
   const notificationToggle = document.getElementById("notification-toggle");
   const notificationDropdown = document.getElementById("notification-dropdown");
@@ -8,19 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const categoriesDropdown = document.getElementById("categories-dropdown");
   const bookingRequests = document.getElementById("booking-requests");
 
-  console.log("Desktop elements found:", {
-    notificationToggle: !!notificationToggle,
-    notificationDropdown: !!notificationDropdown,
-    categoriesBtn: !!categoriesBtn,
-    categoriesDropdown: !!categoriesDropdown,
-    bookingRequests: !!bookingRequests
-  });
-
   // Desktop Notifications toggle - ORIGINAL CODE
   if (notificationToggle && notificationDropdown) {
     notificationToggle.addEventListener("click", function (e) {
       e.stopPropagation();
-      console.log("Desktop notification toggle clicked");
       notificationDropdown.classList.toggle("hidden");
 
       // Toggle highlight class (like hover fill)
@@ -41,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (categoriesBtn && categoriesDropdown) {
     categoriesBtn.addEventListener("click", function (e) {
       e.stopPropagation();
-      console.log("Desktop categories toggle clicked");
       categoriesDropdown.classList.toggle("hidden");
 
       // Close notifications if open
@@ -79,7 +67,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Desktop Booking Requests redirect - ORIGINAL CODE
   if (bookingRequests) {
     bookingRequests.addEventListener("click", function () {
-      console.log("Booking requests clicked - redirecting");
       window.location.href = "librarianBookingRequests.html";
     });
   }
@@ -94,20 +81,23 @@ document.addEventListener("DOMContentLoaded", function () {
   const mobileNotificationScreen = document.getElementById("mobile-notification-screen");
   const mobileBackBtn = document.getElementById("mobile-back-btn");
 
-  console.log("Mobile elements found:", {
-    hamburger: !!hamburger,
-    mobileSidebarOverlay: !!mobileSidebarOverlay,
-    mobileSidebar: !!mobileSidebar,
-    mobileNotificationToggle: !!mobileNotificationToggle,
-    mobileNotificationScreen: !!mobileNotificationScreen,
-    mobileBackBtn: !!mobileBackBtn
-  });
-
   // Mobile hamburger menu functionality
   if (hamburger && mobileSidebarOverlay && mobileSidebar) {
     hamburger.addEventListener("click", function (e) {
       e.stopPropagation();
-      console.log("Mobile hamburger clicked - opening sidebar");
+      mobileSidebarOverlay.classList.remove("hidden");
+      mobileSidebar.classList.add("open");
+      
+      // Close mobile notification if open
+      if (mobileNotificationScreen) {
+        mobileNotificationScreen.classList.add("hidden");
+      }
+    });
+
+    // Add touch event for better mobile support
+    hamburger.addEventListener("touchstart", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
       mobileSidebarOverlay.classList.remove("hidden");
       mobileSidebar.classList.add("open");
       
@@ -120,23 +110,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Close mobile sidebar when clicking overlay
     mobileSidebarOverlay.addEventListener("click", function (e) {
       if (e.target === mobileSidebarOverlay) {
-        console.log("Mobile sidebar overlay clicked - closing sidebar");
         mobileSidebarOverlay.classList.add("hidden");
         mobileSidebar.classList.remove("open");
-      }
-    });
-
-    // Add touch event for better mobile support
-    hamburger.addEventListener("touchstart", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      console.log("Mobile hamburger touched - opening sidebar");
-      mobileSidebarOverlay.classList.remove("hidden");
-      mobileSidebar.classList.add("open");
-      
-      // Close mobile notification if open
-      if (mobileNotificationScreen) {
-        mobileNotificationScreen.classList.add("hidden");
       }
     });
   }
@@ -145,7 +120,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (mobileNotificationToggle && mobileNotificationScreen) {
     mobileNotificationToggle.addEventListener("click", function (e) {
       e.stopPropagation();
-      console.log("Mobile notification toggle clicked - opening notification screen");
       mobileNotificationScreen.classList.remove("hidden");
       
       // Close mobile sidebar if open
@@ -159,7 +133,6 @@ document.addEventListener("DOMContentLoaded", function () {
     mobileNotificationToggle.addEventListener("touchstart", function (e) {
       e.preventDefault();
       e.stopPropagation();
-      console.log("Mobile notification toggle touched - opening notification screen");
       mobileNotificationScreen.classList.remove("hidden");
       
       // Close mobile sidebar if open
@@ -173,21 +146,18 @@ document.addEventListener("DOMContentLoaded", function () {
   // Mobile back button functionality
   if (mobileBackBtn && mobileNotificationScreen) {
     mobileBackBtn.addEventListener("click", function () {
-      console.log("Mobile back button clicked - closing notification screen");
       mobileNotificationScreen.classList.add("hidden");
     });
 
     // Add touch event for better mobile support
     mobileBackBtn.addEventListener("touchstart", function (e) {
       e.preventDefault();
-      console.log("Mobile back button touched - closing notification screen");
       mobileNotificationScreen.classList.add("hidden");
     });
   }
 
   // Handle window resize for responsive behavior
   window.addEventListener("resize", function () {
-    console.log("Window resized to:", window.innerWidth);
     if (window.innerWidth > 768) {
       // Desktop mode - hide mobile elements
       if (mobileSidebarOverlay && mobileSidebar) {
@@ -211,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // PWA Install functionality
+  // PWA Install functionality - NEW
   let deferredPrompt;
 
   window.addEventListener('beforeinstallprompt', (e) => {
@@ -260,9 +230,10 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   });
-
-  console.log("All event listeners attached successfully");
 });
+
+
+
 
 
   console.log("All event listeners attached successfully");
