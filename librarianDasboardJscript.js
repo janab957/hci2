@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("DOM loaded - initializing desktop functionality");
-
   // ORIGINAL DESKTOP FUNCTIONALITY - COMPLETELY PRESERVED
   const notificationToggle = document.getElementById("notification-toggle");
   const notificationDropdown = document.getElementById("notification-dropdown");
@@ -8,29 +6,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const categoriesDropdown = document.getElementById("categories-dropdown");
   const bookingRequests = document.getElementById("booking-requests");
 
-  console.log("Desktop elements found:", {
-    notificationToggle: !!notificationToggle,
-    notificationDropdown: !!notificationDropdown,
-    categoriesBtn: !!categoriesBtn,
-    categoriesDropdown: !!categoriesDropdown,
-    bookingRequests: !!bookingRequests
-  });
-
   // Desktop Notifications toggle - ORIGINAL CODE
   if (notificationToggle && notificationDropdown) {
-    console.log("Setting up notification toggle");
     notificationToggle.addEventListener("click", function (e) {
-      console.log("Notification toggle clicked");
       e.stopPropagation();
       notificationDropdown.classList.toggle("hidden");
 
       // Toggle highlight class (like hover fill)
       if (notificationDropdown.classList.contains("hidden")) {
         notificationToggle.classList.remove("bg-[#6D7F96]");
-        console.log("Notification dropdown hidden");
       } else {
         notificationToggle.classList.add("bg-[#6D7F96]");
-        console.log("Notification dropdown shown");
       }
 
       // Close categories if open
@@ -38,15 +24,11 @@ document.addEventListener("DOMContentLoaded", function () {
         categoriesDropdown.classList.add("hidden");
       }
     });
-  } else {
-    console.error("Notification elements not found!");
   }
 
   // Desktop Categories toggle - ORIGINAL CODE
   if (categoriesBtn && categoriesDropdown) {
-    console.log("Setting up categories toggle");
     categoriesBtn.addEventListener("click", function (e) {
-      console.log("Categories button clicked");
       e.stopPropagation();
       categoriesDropdown.classList.toggle("hidden");
 
@@ -58,8 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
         notificationToggle.classList.remove("bg-[#6D7F96]");
       }
     });
-  } else {
-    console.error("Categories elements not found!");
   }
 
   // Desktop Click outside to close both dropdowns - ORIGINAL CODE
@@ -87,70 +67,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Desktop Booking Requests redirect - ORIGINAL CODE
   if (bookingRequests) {
     bookingRequests.addEventListener("click", function () {
-      console.log("Booking requests clicked");
       window.location.href = "librarianBookingRequests.html";
     });
   }
-
-  // Install Button functionality - FIXED
-  const installButtons = document.querySelectorAll('.install-btn');
-  console.log("Install buttons found:", installButtons.length);
-
-  // Show install buttons by default for testing
-  installButtons.forEach(button => {
-    button.style.display = 'inline-flex';
-    button.disabled = false;
-    console.log("Install button made visible");
-  });
-
-  let deferredPrompt;
-
-  window.addEventListener('beforeinstallprompt', (e) => {
-    console.log("Before install prompt event fired");
-    // Prevent the mini-infobar from appearing on mobile
-    e.preventDefault();
-    // Save the event for later use
-    deferredPrompt = e;
-
-    // Show all install buttons
-    installButtons.forEach(btn => {
-      btn.style.display = 'inline-flex';
-      btn.disabled = false;
-    });
-  });
-
-  installButtons.forEach(button => {
-    button.addEventListener('click', async () => {
-      console.log("Install button clicked");
-      
-      if (!deferredPrompt) {
-        console.log("No deferred prompt available, showing fallback");
-        alert('Install prompt not available. This feature works when the site is served over HTTPS and meets PWA criteria.');
-        return;
-      }
-      
-      // Show the install prompt
-      deferredPrompt.prompt();
-
-      // Wait for the user's choice
-      const choiceResult = await deferredPrompt.userChoice;
-
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the install prompt');
-      } else {
-        console.log('User dismissed the install prompt');
-      }
-
-      // Clear the saved prompt since it can only be used once
-      deferredPrompt = null;
-
-      // Hide install buttons after prompt
-      installButtons.forEach(btn => {
-        btn.style.display = 'none';
-        btn.disabled = true;
-      });
-    });
-  });
 
   // NEW MOBILE FUNCTIONALITY - ADDED ONLY FOR MOBILE
   
@@ -162,19 +81,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const mobileNotificationScreen = document.getElementById("mobile-notification-screen");
   const mobileBackBtn = document.getElementById("mobile-back-btn");
 
-  console.log("Mobile elements found:", {
-    hamburger: !!hamburger,
-    mobileSidebarOverlay: !!mobileSidebarOverlay,
-    mobileSidebar: !!mobileSidebar,
-    mobileNotificationToggle: !!mobileNotificationToggle,
-    mobileNotificationScreen: !!mobileNotificationScreen,
-    mobileBackBtn: !!mobileBackBtn
-  });
-
   // Mobile hamburger menu functionality
   if (hamburger && mobileSidebarOverlay && mobileSidebar) {
     hamburger.addEventListener("click", function (e) {
-      console.log("Mobile hamburger clicked");
       e.stopPropagation();
       mobileSidebarOverlay.classList.remove("hidden");
       mobileSidebar.classList.add("open");
@@ -187,7 +96,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Add touch event for better mobile support
     hamburger.addEventListener("touchstart", function (e) {
-      console.log("Mobile hamburger touched");
       e.preventDefault();
       e.stopPropagation();
       mobileSidebarOverlay.classList.remove("hidden");
@@ -202,7 +110,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Close mobile sidebar when clicking overlay
     mobileSidebarOverlay.addEventListener("click", function (e) {
       if (e.target === mobileSidebarOverlay) {
-        console.log("Mobile sidebar overlay clicked - closing");
         mobileSidebarOverlay.classList.add("hidden");
         mobileSidebar.classList.remove("open");
       }
@@ -212,7 +119,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Mobile notification functionality
   if (mobileNotificationToggle && mobileNotificationScreen) {
     mobileNotificationToggle.addEventListener("click", function (e) {
-      console.log("Mobile notification toggle clicked");
       e.stopPropagation();
       mobileNotificationScreen.classList.remove("hidden");
       
@@ -225,7 +131,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Add touch event for better mobile support
     mobileNotificationToggle.addEventListener("touchstart", function (e) {
-      console.log("Mobile notification toggle touched");
       e.preventDefault();
       e.stopPropagation();
       mobileNotificationScreen.classList.remove("hidden");
@@ -241,13 +146,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // Mobile back button functionality
   if (mobileBackBtn && mobileNotificationScreen) {
     mobileBackBtn.addEventListener("click", function () {
-      console.log("Mobile back button clicked");
       mobileNotificationScreen.classList.add("hidden");
     });
 
     // Add touch event for better mobile support
     mobileBackBtn.addEventListener("touchstart", function (e) {
-      console.log("Mobile back button touched");
       e.preventDefault();
       mobileNotificationScreen.classList.add("hidden");
     });
@@ -255,7 +158,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Handle window resize for responsive behavior
   window.addEventListener("resize", function () {
-    console.log("Window resized to:", window.innerWidth);
     if (window.innerWidth > 768) {
       // Desktop mode - hide mobile elements
       if (mobileSidebarOverlay && mobileSidebar) {
@@ -279,7 +181,56 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  console.log("All event listeners set up successfully");
+  // PWA Install functionality - NEW
+  let deferredPrompt;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent the mini-infobar from appearing on mobile
+    e.preventDefault();
+    // Save the event for later use
+    deferredPrompt = e;
+
+    // Show all install buttons
+    document.querySelectorAll('.install-btn').forEach(btn => {
+      btn.style.display = 'inline-flex';
+      btn.disabled = false;
+    });
+  });
+
+  document.querySelectorAll('.install-btn').forEach(button => {
+    // Initially show install buttons for testing
+    button.style.display = 'inline-flex';
+    button.disabled = false;
+
+    button.addEventListener('click', async () => {
+      if (!deferredPrompt) {
+        alert('Install prompt not available. This feature works when the site is served over HTTPS and meets PWA criteria.');
+        return;
+      }
+      
+      // Show the install prompt
+      deferredPrompt.prompt();
+
+      // Wait for the user's choice
+      const choiceResult = await deferredPrompt.userChoice;
+
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+
+      // Clear the saved prompt since it can only be used once
+      deferredPrompt = null;
+
+      // Hide install buttons after prompt
+      document.querySelectorAll('.install-btn').forEach(btn => {
+        btn.style.display = 'none';
+        btn.disabled = true;
+      });
+    });
+  });
 });
+
 
 
