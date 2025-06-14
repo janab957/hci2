@@ -1,24 +1,50 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Desktop elements
   const notificationToggle = document.getElementById("notification-toggle");
   const notificationDropdown = document.getElementById("notification-dropdown");
-
   const categoriesBtn = document.getElementById("categories-btn");
   const categoriesDropdown = document.getElementById("categories-dropdown");
-
   const bookingRequests = document.getElementById("booking-requests");
 
-  // Hamburger menu functionality for mobile sidebar
+  // Mobile elements
   const hamburger = document.getElementById("hamburger");
-  const sidebar = document.getElementById("sidebar");
+  const mobileSidebar = document.getElementById("mobile-sidebar");
+  const mobileNotificationToggle = document.getElementById("mobile-notification-toggle");
+  const mobileNotificationDropdown = document.getElementById("mobile-notification-dropdown");
+  const mobileBackBtn = document.getElementById("mobile-back-btn");
 
-  if (hamburger && sidebar) {
-    hamburger.addEventListener("click", function () {
-      sidebar.classList.toggle("hidden");
-      sidebar.classList.toggle("open");
+  // Hamburger menu functionality for mobile sidebar
+  if (hamburger && mobileSidebar) {
+    hamburger.addEventListener("click", function (e) {
+      e.stopPropagation();
+      mobileSidebar.classList.toggle("open");
+      // Close mobile notification if open
+      if (mobileNotificationDropdown) {
+        mobileNotificationDropdown.classList.add("hidden");
+      }
     });
   }
 
-  // Notifications toggle
+  // Mobile notification toggle
+  if (mobileNotificationToggle && mobileNotificationDropdown) {
+    mobileNotificationToggle.addEventListener("click", function (e) {
+      e.stopPropagation();
+      mobileNotificationDropdown.classList.toggle("hidden");
+      // Close mobile sidebar if open
+      if (mobileSidebar) {
+        mobileSidebar.classList.remove("open");
+      }
+    });
+  }
+
+  // Mobile back button
+  if (mobileBackBtn && mobileNotificationDropdown) {
+    mobileBackBtn.addEventListener("click", function () {
+      mobileNotificationDropdown.classList.add("hidden");
+    });
+  }
+
+  // Desktop notifications toggle
   if (notificationToggle && notificationDropdown) {
     notificationToggle.addEventListener("click", function (e) {
       e.stopPropagation();
@@ -38,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Categories toggle
+  // Desktop categories toggle
   if (categoriesBtn && categoriesDropdown) {
     categoriesBtn.addEventListener("click", function (e) {
       e.stopPropagation();
@@ -47,13 +73,16 @@ document.addEventListener("DOMContentLoaded", function () {
       // Close notifications if open
       if (notificationDropdown) {
         notificationDropdown.classList.add("hidden");
-        notificationToggle.classList.remove("bg-[#6D7F96]");
+        if (notificationToggle) {
+          notificationToggle.classList.remove("bg-[#6D7F96]");
+        }
       }
     });
   }
 
-  // Click outside to close both dropdowns
+  // Click outside to close dropdowns and mobile elements
   document.addEventListener("click", function (e) {
+    // Close desktop notification dropdown
     if (notificationDropdown && notificationToggle) {
       if (
         !notificationDropdown.contains(e.target) &&
@@ -64,6 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
+    // Close desktop categories dropdown
     if (categoriesDropdown && categoriesBtn) {
       if (
         !categoriesDropdown.contains(e.target) &&
@@ -72,42 +102,112 @@ document.addEventListener("DOMContentLoaded", function () {
         categoriesDropdown.classList.add("hidden");
       }
     }
+
+    // Close mobile sidebar
+    if (mobileSidebar && hamburger) {
+      if (
+        !mobileSidebar.contains(e.target) &&
+        !hamburger.contains(e.target) &&
+        window.innerWidth <= 768
+      ) {
+        mobileSidebar.classList.remove("open");
+      }
+    }
+
+    // Close mobile notification dropdown
+    if (mobileNotificationDropdown && mobileNotificationToggle) {
+      if (
+        !mobileNotificationDropdown.contains(e.target) &&
+        !mobileNotificationToggle.contains(e.target) &&
+        window.innerWidth <= 768
+      ) {
+        mobileNotificationDropdown.classList.add("hidden");
+      }
+    }
   });
 
-  // Redirect to libranet3.html when "Booking Requests" is clicked
+  // Redirect to booking requests page
   if (bookingRequests) {
     bookingRequests.addEventListener("click", function () {
       window.location.href = "librarianBookingRequests.html";
     });
   }
 
-  // Close mobile sidebar when clicking outside
-  document.addEventListener("click", function (e) {
-    if (sidebar && hamburger) {
-      if (
-        !sidebar.contains(e.target) &&
-        !hamburger.contains(e.target) &&
-        window.innerWidth <= 768
-      ) {
-        sidebar.classList.add("hidden");
-        sidebar.classList.remove("open");
+  // Handle window resize for responsive behavior
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 768) {
+      // Desktop mode - hide mobile elements
+      if (mobileSidebar) {
+        mobileSidebar.classList.remove("open");
+      }
+      if (mobileNotificationDropdown) {
+        mobileNotificationDropdown.classList.add("hidden");
+      }
+    } else {
+      // Mobile mode - hide desktop dropdowns
+      if (notificationDropdown) {
+        notificationDropdown.classList.add("hidden");
+      }
+      if (categoriesDropdown) {
+        categoriesDropdown.classList.add("hidden");
+      }
+      if (notificationToggle) {
+        notificationToggle.classList.remove("bg-[#6D7F96]");
       }
     }
   });
 
-  // Handle window resize for responsive behavior
-  window.addEventListener("resize", function () {
-    if (sidebar) {
-      if (window.innerWidth > 768) {
-        sidebar.classList.remove("hidden");
-        sidebar.classList.remove("open");
-      } else {
-        sidebar.classList.add("hidden");
-        sidebar.classList.remove("open");
+  // PWA Install functionality
+  let deferredPrompt;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent the mini-infobar from appearing on mobile
+    e.preventDefault();
+    // Save the event for later use
+    deferredPrompt = e;
+
+    // Show all install buttons
+    document.querySelectorAll('.install-btn').forEach(btn => {
+      btn.style.display = 'inline-flex';
+      btn.disabled = false;
+    });
+  });
+
+  document.querySelectorAll('.install-btn').forEach(button => {
+    // Initially hide install buttons until prompt is available
+    button.style.display = 'none';
+    button.disabled = true;
+
+    button.addEventListener('click', async () => {
+      if (!deferredPrompt) {
+        alert('Install prompt not available yet. Please try again later.');
+        return;
       }
-    }
+      
+      // Show the install prompt
+      deferredPrompt.prompt();
+
+      // Wait for the user's choice
+      const choiceResult = await deferredPrompt.userChoice;
+
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+
+      // Clear the saved prompt since it can only be used once
+      deferredPrompt = null;
+
+      // Hide install buttons after prompt
+      document.querySelectorAll('.install-btn').forEach(btn => {
+        btn.style.display = 'none';
+        btn.disabled = true;
+      });
+    });
   });
 });
+
 
 
 
