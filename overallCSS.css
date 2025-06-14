@@ -1,112 +1,43 @@
-/* === MOBILE RESPONSIVE STYLES ADDITION === */
-
-/* Fix notification dropdown */
-.notification-dropdown {
-  right: 0;
-  left: auto;
-}
-
-/* Mobile top nav */
+/* MOBILE NAVBAR STYLES */
 .mobile-top-nav {
   background-color: #18354a;
-  height: 52px;
-  display: flex;
 }
 
-/* Mobile sidebar overlay */
 .mobile-sidebar-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 50;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 40;
 }
 
-/* Mobile sidebar */
 .mobile-sidebar {
   position: fixed;
-  top: 52px;
+  top: 0;
   left: 0;
-  width: 16rem;
-  height: calc(100vh - 52px);
-  background-color: #61584D;
-  color: white;
+  height: 100%;
+  width: 260px;
+  background-color: #18354a;
+  z-index: 50;
   transform: translateX(-100%);
-  transition: transform 0.3s ease;
-  z-index: 51;
-  display: flex;
-  flex-direction: column;
+  transition: transform 0.3s ease-in-out;
 }
 
 .mobile-sidebar.open {
   transform: translateX(0);
 }
 
-/* Mobile notification screen */
 .mobile-notification-screen {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  height: 100%;
+  width: 100%;
   background-color: white;
-  z-index: 60;
+  z-index: 50;
   overflow-y: auto;
 }
-
-/* Hide mobile elements on desktop */
-@media (min-width: 769px) {
-  .mobile-top-nav,
-  .mobile-sidebar,
-  .mobile-sidebar-overlay,
-  .mobile-notification-screen {
-    display: none !important;
-  }
-}
-
-/* Hide desktop elements on mobile */
-@media (max-width: 768px) {
-  .side-nav,
-  .top-nav:not(.mobile-top-nav) {
-    display: none;
-  }
-
-  .main-content {
-    margin: 0;
-    margin-top: 60px;
-    padding: 1rem;
-  }
-
-  .quick-access-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-left: 0;
-    padding: 0;
-  }
-
-  .quick-card {
-    width: 100%;
-    background-color: #f1e9df;
-    padding: 1rem;
-    border-radius: 8px;
-  }
-
-  .card-title {
-    font-size: 1rem;
-    font-weight: bold;
-  }
-
-  .card-sub {
-    font-size: 0.875rem;
-  }
-
-  .card-link {
-    font-size: 0.875rem;
-    text-align: right;
-  }
-}
-
 
 
