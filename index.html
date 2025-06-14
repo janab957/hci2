@@ -4,13 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LibraNet - Login</title>
-
-  <!-- Tailwind CSS CDN -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#FFFFFF">
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Font Awesome CDN -->
+  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
   <!-- External CSS -->
   <link rel="stylesheet" href="overallCSS.css" />
 </head>
@@ -48,10 +47,11 @@
     </nav>
   </header>
 
+  <!-- Sidebar -->
   <div class="flex flex-1 pt-[48px] md:pt-[64px]">
-    <!-- Sidebar -->
     <aside id="sidebar" class="side-nav bg-[#61584D] px-2 py-3 w-60 min-h-screen hidden md:flex flex-col fixed left-0 top-[48px] md:top-[64px] z-40">
-      <div class="mt-auto mb-2 ml-0.3">
+      <!-- Empty sidebar - only showing the color -->
+      <div class="space-y-1 pt-4 mt-auto mb-2">
         <a href="#" class="flex items-center gap-2 text-white">
           <i class="fas fa-question-circle"></i>
           Help & Support
@@ -101,7 +101,7 @@
         </div>
 
         <p class="text-center text-base pl-16">
-          Don’t have an account? <a href="#" class="link-btn">Sign up!</a>
+          Don't have an account? <a href="#" class="link-btn">Sign up!</a>
         </p>
       </div>
     </main>
@@ -111,7 +111,6 @@
   <script src="librarianLoginJscript.js"></script>
 </body>
 </html>
-
 
 
 
