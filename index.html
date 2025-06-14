@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <!-- External CSS -->
-  <link rel="stylesheet" href="overallCSS.css" />
+  <link rel="stylesheet" href="overallCSS_fixed.css" />
 </head>
 <body class="bg-gray-100">
 
@@ -51,7 +51,7 @@
         </button>
 
         <!-- Dropdown Menu -->
-        <div id="categories-dropdown" class="absolute left-0 top-full mt-1 hidden flex-col bg-[#6D7F96] text-white w-full rounded-md shadow-md z-10">
+        <div id="categories-dropdown" class="absolute left-0 top-full mt-1 hidden flex-col bg-[#6D7F96] text-white w-full rounded-md shadow-md z-[1000]">
           <a href="#" class="block px-4 py-2 hover:bg-[#415977]">Books</a>
           <a href="#" class="block px-4 py-2 hover:bg-[#415977]">Meeting Rooms</a>
           <a href="#" class="block px-4 py-2 hover:bg-[#415977]">Magazines</a>
@@ -65,30 +65,32 @@
        <i class="fa-solid fa-download"></i> <span class="font-bold">Install LibraNet</span>
       </button>
       
-      <a href="javascript:void(0);" id="notification-toggle" class="relative px-4 py-2 hover:bg-[#6D7F96] text-white rounded transition">
-        <i class="fas fa-bell"></i> Notifications
-      </a>
+      <div class="relative">
+        <a href="javascript:void(0);" id="notification-toggle" class="relative px-4 py-2 hover:bg-[#6D7F96] text-white rounded transition">
+          <i class="fas fa-bell"></i> Notifications
+        </a>
 
-      <a href="#"><i class="fas fa-user-circle"></i> Hello, Adrian</a>
-
-      <!-- Notification Dropdown -->
-      <div id="notification-dropdown" class="notification-dropdown hidden no-rounded">
-        <div class="notification-item">
-          • Book request from Ali – Gilbert Strang's Calculus textbook<br />
-          <a href="#">View</a>
-        </div>
-        <div class="notification-item">
-          • Room booking from Sara – Room 201<br />
-          <a href="#">View</a>
-        </div>
-        <div class="notification-item">
-          • Room booking from John – Room 204<br />
-          <a href="#">View</a>
-        </div>
-        <div class="notification-footer">
-          <a href="#">See All Requests &gt;</a>
+        <!-- Notification Dropdown -->
+        <div id="notification-dropdown" class="notification-dropdown hidden no-rounded">
+          <div class="notification-item">
+            • Book request from Ali – Gilbert Strang's Calculus textbook<br />
+            <a href="#">View</a>
+          </div>
+          <div class="notification-item">
+            • Room booking from Sara – Room 201<br />
+            <a href="#">View</a>
+          </div>
+          <div class="notification-item">
+            • Room booking from John – Room 204<br />
+            <a href="#">View</a>
+          </div>
+          <div class="notification-footer">
+            <a href="#">See All Requests &gt;</a>
+          </div>
         </div>
       </div>
+
+      <a href="#"><i class="fas fa-user-circle"></i> Hello, Adrian</a>
     </nav>
   </header>
 
@@ -310,8 +312,7 @@
   </main>
 
   <!-- External JS -->
-  <script src="librarianDashboardJscript.js"></script>
+  <script src="librarianDashboardJscript_responsive.js"></script>
 </body>
 </html>
-
 
