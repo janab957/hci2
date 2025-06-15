@@ -1,3 +1,5 @@
+console.log("✅ JS Loaded");
+
 document.addEventListener("DOMContentLoaded", function () {
   const notificationToggle = document.getElementById("notification-toggle");
   const notificationToggleMobile = document.getElementById("notification-toggle-mobile");
