@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Redirect to libranet3.html when "Booking Requests" is clicked
   if (bookingRequests) {
     bookingRequests.addEventListener("click", function () {
-      window.location.href = "librarianBookingRequests.html";
+      window.location.href = "librarianBookingRequests_responsive.html";
     });
   }
 
