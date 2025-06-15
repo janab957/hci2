@@ -6,8 +6,11 @@ self.addEventListener('install', (event) => {
         '/',
         '/index.html',
         '/notifications.html',
+		'/librarianBookingRequests_responsive.html',
         '/overallCSS_responsive.css',
+		'/overallCSS_responsive2.css',
         '/librarianDashboardJscript_responsive.js',
+		'/librarianBookingRequestsJscript_responsive.js',
         '/manifest.json',
         '/icon-192x192.png',
         '/icon-512x512.png'
@@ -23,4 +26,3 @@ self.addEventListener('fetch', (event) => {
     })
   );
 });
-
