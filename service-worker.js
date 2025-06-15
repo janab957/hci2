@@ -9,8 +9,8 @@ self.addEventListener('install', (event) => {
         '/overallCSS_responsive.css',
         '/librarianDashboardJscript_responsive.js',
         '/manifest.json',
-        '/images/icons/icon-192x192.png',
-        '/images/icons/icon-512x512.png'
+        '/icon-192x192.png',
+        '/icon-512x512.png'
       ]);
     })
   );
