@@ -1,3 +1,5 @@
+/* ORIGINAL DESKTOP STYLES FROM pasted_content_2.txt - COMPLETELY PRESERVED */
+
 /* Top navigation */
 .top-nav {
   position: fixed;
@@ -147,7 +149,6 @@
   margin-left: 2.5rem; /* Adjust this value to control how far it shifts */
 }
 
-
 /* Input fields */
 .input-field {
   flex: 1;
@@ -186,7 +187,6 @@
   font-size: 1rem;
 }
 
-
 /* Toggle Password Button Styling */
 #togglePassword {
   position: absolute;
@@ -200,7 +200,6 @@
   color: #6b7280; /* Tailwind gray-500 */
   padding: 0;
 }
-
 
 /* Enabled Login button */
 .btn-enabled {
@@ -222,13 +221,12 @@
   flex-grow: 0.75;
 }
 
-
 .quick-access-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Responsive columns */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2rem;
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
+  margin-left:3rem;
+  gap: 3rem ;
   margin-top: 3rem;
 }
 
@@ -237,9 +235,8 @@
   padding: 1.5rem;
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
-  width: 100%;
+  width: 85%;         
   min-height: 11rem;
-  box-sizing: border-box;
 }
 
 .card-title {
@@ -252,8 +249,8 @@
   color: #333;
   font-size: 1.2rem;
   font-weight: 500;
-  margin-top: 2.3rem;
   margin-bottom: 0;
+  margin-top: 2.3rem;
 }
 
 .card-link {
@@ -272,24 +269,6 @@
   align-items: center;
 }
 
-/* Optional: Slight font & padding adjustment on smaller screens */
-@media (max-width: 640px) {
-  .quick-card {
-    padding: 1rem;
-  }
-
-  .card-title {
-    font-size: 1.2rem;
-  }
-
-  .card-sub,
-  .card-link {
-    font-size: 0.95rem;
-  }
-}
-
-}
-
 .search-container {
   width: 600px;
   margin: 1rem auto;
@@ -306,7 +285,6 @@
   font-size: 0.9rem;
   color: #333;
   outline: none;
-
 }
 
 .search-button {
@@ -330,18 +308,18 @@
   box-shadow: 0 0 0 4px rgba(85, 75, 142, 0.1);
 }
 
-
-/* Notification Dropdown Styling - Match Screenshot */
+/* Notification Dropdown Styling - FIXED */
 .notification-dropdown {
   position: absolute;
-  top: 3.83rem;
+  top: 100%;
   right: 0;
   width: 320px;
   background-color: white;
   border: 1px solid #ccc;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 50;
+  z-index: 1000;
   font-family: sans-serif;
+  margin-top: 0.25rem;
 }
 
 .notification-item {
@@ -372,7 +350,6 @@
   font-weight: 500;
   text-decoration: underline;
 }
-
 
 .notification-button.active {
   background-color: #415977; /* or any highlight color you want */
@@ -424,7 +401,6 @@
   min-width: 150px;
   max-height: 200px;
   overflow-y: auto;
-  
 }
 
 .dropdown-option {
@@ -566,7 +542,6 @@
   scrollbar-color: #cbd5e1 #f1f5f9;
 }
 
-
 /* Tab Button Styling */
 .tab-button {
   transition: all 0.2s ease-in-out;
@@ -674,23 +649,142 @@
   color: #111827;
 }
 
+/* Install Button Styling */
+.install-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #18354a;
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: bold;
+}
 
-/* Responsive Design */
+.install-btn:hover {
+  background-color: #415977;
+}
+
+/* NEW MOBILE-ONLY STYLES */
+
+/* Mobile Top Navigation */
+.mobile-top-nav {
+  height: 52px;
+}
+
+/* Mobile Notification Full Screen */
+.mobile-notification-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  z-index: 60;
+}
+
+/* Mobile Sidebar Overlay */
+.mobile-sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 50;
+}
+
+.mobile-sidebar {
+  position: fixed;
+  top: 52px;
+  left: 0;
+  width: 16rem;
+  height: calc(100vh - 52px);
+  background-color: #61584D;
+  color: white;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 51;
+}
+
+.mobile-sidebar.open {
+  transform: translateX(0);
+}
+
+/* Mobile Responsive Styles */
 @media (max-width: 768px) {
-  .table-container {
-    max-height: 400px;
+  .main-content {
+    margin-left: 0;
+    margin-top: 52px;
+    padding: 1rem;
   }
   
   .search-container {
+    width: 100%;
     max-width: 100%;
-    margin: 0 1rem;
+    margin: 0 0 2.5rem 0;
+    padding: 0 1rem;
   }
   
-  .tab-button {
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
+  .search-input {
+    background-color: #f5f5f5;
+    border-radius: 25px;
+    padding: 12px 40px 12px 16px;
+    font-size: 14px;
+  }
+  
+  .quick-access-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-left: 0;
+    margin-top: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .quick-card {
+    width: 100%;
+    min-height: auto;
+    padding: 1.25rem;
+    background-color: #e8dcc6;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card-sub {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    color: #666;
+  }
+  
+  .card-link {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #6366f1;
   }
 }
 
+/* Desktop specific styles */
+@media (min-width: 769px) {
+  .mobile-top-nav {
+    display: none !important;
+  }
+  
+  .mobile-sidebar {
+    display: none !important;
+  }
+  
+  .mobile-notification-screen {
+    display: none !important;
+  }
+}
 
 
