@@ -1,5 +1,7 @@
 // Corrected JavaScript with HTML table data and proper mobile functionality
 document.addEventListener('DOMContentLoaded', function() {
+    console.log("DOM fully loaded and script is running");
+
     // State management
     const selectedFilters = {
         type: [],
