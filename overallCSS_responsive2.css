@@ -1,0 +1,400 @@
+/* Original CSS with proper mobile responsive additions */
+
+/* Desktop Top navigation (Original) */
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: #18354a;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+  padding: 0 1.5rem;
+}
+
+/* Mobile Top navigation */
+.mobile-top-nav {
+  height: 48px;
+}
+
+/* Sidebar (Original) */
+.side-nav {
+  position: fixed;
+  top: 4rem;
+  left: 0;
+  width: 16rem;
+  height: calc(100vh - 4rem);
+  background-color: #61584D;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  gap: 1rem;
+}
+
+.side-nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  transition: color 0.2s;
+}
+
+.side-nav a:hover {
+  color: #facc15;
+}
+
+.side-nav hr {
+  border-color: rgba(255, 255, 255, 0.3);
+  margin: 1rem 0;
+}
+
+/* Main Content (Original) */
+.main-content {
+  margin-left: 16rem;
+  margin-top: 6rem;
+  padding: 1.5rem;
+}
+
+/* Sidebar spacer */
+.sidebar-spacer {
+  flex-grow: 0.75;
+}
+
+/* Notification Dropdown Styling */
+.notification-dropdown {
+  position: absolute;
+  top: 3.83rem;
+  right: 0;
+  left: 1025px;
+  width: 350px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+  font-family: sans-serif;
+  padding: 1rem;
+}
+
+.notification-item {
+  margin-bottom: 0.5rem;
+}
+
+.notification-item:last-child {
+  margin-bottom: 0;
+}
+
+.notification-footer {
+  border-top: 1px solid #ddd;
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+}
+
+/* Dropdown Styling (Original) */
+.dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: inherit;
+}
+
+.dropdown-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 0.25rem;
+}
+
+.dropdown-button-simple {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  color: inherit;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #e3d8cc;
+  border: 1px solid #ccc;
+  border-radius: 0.375rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 150px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.dropdown-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  background-color: transparent;
+}
+
+.dropdown-option:hover {
+  background-color: #f3f4f6;
+}
+
+.dropdown-option.selected {
+  background-color: #b9afa3;
+  color: #000;
+}
+
+.dropdown-option.selected:hover {
+  background-color: #b8a690;
+}
+
+/* Filter Chips Styling (Original) */
+.filter-chips-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #374151;
+  color: white;
+  padding: 0.375rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.filter-chip .remove-chip {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 0.25rem;
+  font-size: 0.75rem;
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.filter-chip .remove-chip:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.clear-all-link {
+  color: #3b82f6;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.875rem;
+  margin-left: 0.5rem;
+}
+
+.clear-all-link:hover {
+  color: #1d4ed8;
+}
+
+/* Menu Item Styling (Original) */
+.menu-item {
+  margin-bottom: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.menu-item:hover {
+  background-color: #a6947e;
+  transform: translateX(2px);
+}
+
+.menu-item.active {
+  background-color: #a6947e;
+}
+
+.menu-item .arrow {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.menu-item:hover .arrow {
+  opacity: 1;
+}
+
+.menu-item.active .arrow {
+  opacity: 1;
+}
+
+/* Table Container (Original) */
+.table-container {
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+}
+
+.table-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.table-container::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.table-container {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+.table-container table th,
+.table-container table td {
+  padding: 0.35rem 0.6rem;
+  font-size: 0.9rem;
+}
+
+.table-container tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+/* Mobile specific styles */
+@media (max-width: 768px) {
+  /* Hide desktop elements */
+  .main-content {
+    display: none !important;
+  }
+  
+  .side-nav {
+    display: none !important;
+  }
+  
+  .top-nav {
+    display: none !important;
+  }
+  
+  /* Mobile main content */
+  .mobile-main {
+    display: block;
+  }
+  
+  /* Mobile table wrapper */
+  .mobile-table-wrapper {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  
+  .mobile-table {
+    border-collapse: collapse;
+  }
+  
+  .mobile-table th,
+  .mobile-table td {
+    white-space: nowrap;
+    min-width: 80px;
+  }
+  
+  .mobile-table th:first-child,
+  .mobile-table td:first-child {
+    min-width: 120px; /* Student Name column */
+  }
+  
+  .mobile-table th:nth-child(2),
+  .mobile-table td:nth-child(2) {
+    min-width: 80px; /* ID column */
+  }
+  
+  .mobile-table th:nth-child(3),
+  .mobile-table td:nth-child(3) {
+    min-width: 100px; /* Request Type column */
+  }
+  
+  /* Mobile pagination */
+  #mobile-pagination button {
+    padding: 0.5rem 0.75rem;
+    margin: 0 0.125rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    background: white;
+    cursor: pointer;
+    font-size: 0.875rem;
+    min-width: 40px;
+  }
+  
+  #mobile-pagination button.active {
+    background: #374151;
+    color: white;
+    border-color: #374151;
+  }
+  
+  #mobile-pagination button:hover:not(.active) {
+    background: #f3f4f6;
+  }
+  
+  #mobile-pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  /* Mobile filter panel */
+  #mobile-filter-panel {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Mobile dropdown adjustments */
+  .mobile-main .dropdown-menu {
+    position: absolute;
+    right: 0;
+    left: auto;
+    min-width: 120px;
+  }
+}
+
+
+/* Desktop only styles */
+@media (min-width: 769px) {
+  .mobile-main {
+    display: none !important;
+  }
+  
+  .mobile-top-nav {
+    display: none !important;
+  }
+  
+  #sidebar-mobile {
+    display: none !important;
+  }
+  
+  
+}
+
+
+
