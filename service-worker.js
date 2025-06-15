@@ -4,7 +4,7 @@ self.addEventListener('install', (event) => {
     caches.open('libra-cache-v1').then((cache) => {
       return cache.addAll([
         '/',
-        '/librarianDashboard_responsive.html',
+        '/index.html',
         '/notifications.html',
         '/overallCSS_responsive.css',
         '/librarianDashboardJscript_responsive.js',
