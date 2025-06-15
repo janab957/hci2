@@ -3,19 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LibraNet</title>
- 
+  <title>Booking Requests | LibraNet</title>
+  <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#18354a">
+  
+  <!-- PWA Meta Tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="LibraNet">
+  <meta name="msapplication-TileColor" content="#18354a">
+  <meta name="msapplication-config" content="browserconfig.xml">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="manifest" href="manifest.json">
 
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <!-- External CSS -->
-  <link rel="stylesheet" href="overallCSS_responsive2.css" />
+  <link rel="stylesheet" href="merged-booking-requests.css" />
 </head>
 <body class="bg-gray-100">
 
@@ -34,199 +44,188 @@
       </button>
       <button id="notification-toggle-mobile" class="relative">
         <i class="fas fa-bell"></i>
+        <span id="notification-counter-mobile" class="notification-badge">3</span>
       </button>
       <i class="fas fa-user-circle"></i>
     </div>
   </header>
 
-  <!-- Desktop Top Navigation (Original) -->
-<!-- Desktop Top Navigation (Fixed and Responsive) -->
-<header class="top-nav hidden md:block bg-[#18354a] text-white px-6 py-2 shadow">
-  <div class="flex justify-between items-center">
-    
-    <!-- LEFT SIDE -->
-    <div class="flex items-center space-x-4">
-      <i class="fas fa-book-open text-2xl"></i>
-      <span class="text-xl font-bold">LibraNet</span>
-      <a href="#"><i class="fas fa-home"></i> Dashboard</a>
+  <!-- Desktop Top Navigation -->
+  <header class="top-nav hidden md:block bg-[#18354a] text-white px-6 py-2 shadow">
+    <div class="flex justify-between items-center">
+      
+      <!-- LEFT SIDE -->
+      <div class="flex items-center space-x-4">
+        <i class="fas fa-book-open text-2xl"></i>
+        <span class="text-xl font-bold">LibraNet</span>
+        <div id="breadcrumb" class="breadcrumb hidden">
+          <span>Booking requests</span>
+          <span class="mx-2">></span>
+          <span>New Suggestion times</span>
+        </div>
+        <a href="#"><i class="fas fa-home"></i> Dashboard</a>
 
-      <!-- Categories with dropdown -->
-      <div class="relative">
-        <button id="categories-btn" class="w-full flex items-center justify-between px-4 py-2 text-left hover:bg-[#6D7F96] transition">
-          <div class="flex items-center space-x-2">
-            <i class="fas fa-layer-group"></i>
-            <span>Categories</span>
+        <!-- Categories with dropdown -->
+        <div class="relative">
+          <button id="categories-btn" class="w-full flex items-center justify-between px-4 py-2 text-left hover:bg-[#6D7F96] transition">
+            <div class="flex items-center space-x-2">
+              <i class="fas fa-layer-group"></i>
+              <span>Categories</span>
+            </div>
+          </button>
+
+          <!-- Dropdown Menu -->
+          <div id="categories-dropdown" class="absolute left-0 top-full mt-1 hidden flex-col bg-[#6D7F96] text-white w-full rounded-md shadow-md z-10">
+            <a href="#" class="block px-4 py-2 hover:bg-[#415977]">Books</a>
+            <a href="#" class="block px-4 py-2 hover:bg-[#415977]">Meeting Rooms</a>
+            <a href="#" class="block px-4 py-2 hover:bg-[#415977]">Magazines</a>
+            <a href="#" class="block px-4 py-2 hover:bg-[#415977]">Computers & Programs</a>
           </div>
-        </button>
-
-        <!-- Dropdown Menu -->
-        <div id="categories-dropdown" class="absolute left-0 top-full mt-1 hidden flex-col bg-[#6D7F96] text-white w-full rounded-md shadow-md z-10">
-          <a href="#" class="block px-4 py-2 hover:bg-[#415977]">Books</a>
-          <a href="#" class="block px-4 py-2 hover:bg-[#415977]">Meeting Rooms</a>
-          <a href="#" class="block px-4 py-2 hover:bg-[#415977]">Magazines</a>
-          <a href="#" class="block px-4 py-2 hover:bg-[#415977]">Computers & Programs</a>
         </div>
       </div>
+
+      <!-- RIGHT SIDE -->
+      <nav class="flex items-center space-x-6">
+        <button class="install-btn px-4 py-2 bg-[#18354a] text-white rounded-full hover:bg-[#415977] transition">
+          <i class="fa-solid fa-download"></i> <span class="font-bold">Install LibraNet</span>
+        </button>
+        <a href="javascript:void(0);" id="notification-toggle" class="relative px-4 py-2 hover:bg-[#6D7F96] text-white rounded transition">
+          <i class="fas fa-bell"></i> Notifications
+          <span id="notification-counter" class="notification-badge">3</span>
+        </a>
+        <a href="#"><i class="fas fa-user-circle"></i> Hello, Adrian</a>
+      </nav>
     </div>
 
-    <!-- RIGHT SIDE -->
-    <nav class="flex items-center space-x-6">
-      <button class="install-btn px-4 py-2 bg-[#18354a] text-white rounded-full hover:bg-[#415977] transition">
-        <i class="fa-solid fa-download"></i> <span class="font-bold">Install LibraNet</span>
-      </button>
-      <a href="javascript:void(0);" id="notification-toggle" class="relative px-4 py-2 hover:bg-[#6D7F96] text-white rounded transition">
-        <i class="fas fa-bell"></i> Notifications
-      </a>
-      <a href="#"><i class="fas fa-user-circle"></i> Hello, Adrian</a>
-    </nav>
-  </div>
-
-  <!-- Optional: Notification dropdown container -->
-  <div id="notification-dropdown" class="notification-dropdown hidden no-rounded absolute right-6 mt-2 bg-white text-black rounded shadow-md z-20 w-72">
-    <div class="notification-item bg-[#eae0d5] p-3 mb-2 rounded">
-      <p class="text-gray-700">• Book request from Ali – Gilbert Strang's Calculus textbook</p>
-      <a href="#" class="text-[#554b8e] underline text-sm block text-right mt-1">View</a>
+    <!-- Notification dropdown container -->
+    <div id="notification-dropdown" class="notification-dropdown hidden absolute right-6 mt-2 bg-white text-black rounded shadow-md z-20 w-72">
+      <!-- Notifications will be populated by JavaScript -->
     </div>
-    <div class="notification-item bg-[#eae0d5] p-3 mb-2 rounded">
-      <p class="text-gray-700">• Room booking from Sara – Room 201</p>
-      <a href="#" class="text-[#554b8e] underline text-sm block text-right mt-1">View</a>
-    </div>
-    <div class="notification-item bg-[#eae0d5] p-3 mb-2 rounded">
-      <p class="text-gray-700">• Room booking from John – Room 204</p>
-      <a href="#" class="text-[#554b8e] underline text-sm block text-right mt-1">View</a>
-    </div>
-    <div class="notification-footer text-center p-3">
-      <a href="notifications.html" class="text-[#554b8e] underline font-medium">See All Requests &gt;</a>
-    </div>
-  </div>
-</header>
-
+  </header>
 
   <!-- Mobile Sidebar -->
-<aside id="sidebar-mobile"
-  class="fixed top-[48px] left-0 w-60 min-h-screen bg-[#61584D] px-2 py-3 z-[60] hidden md:hidden flex flex-col">
+  <aside id="sidebar-mobile" class="fixed top-[48px] left-0 w-60 min-h-screen bg-[#61584D] px-2 py-3 z-[60] hidden md:hidden flex flex-col transform -translate-x-full transition-transform duration-300">
 
-  <!-- Sidebar Top Items -->
-  <div class="space-y-1">
-    <a href="#" id="dboard" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
-      <div class="flex items-center space-x-3 text-white">
-        <i class="fas fa-home"></i>
-        <span>Dashboard</span>
-      </div>
-    </a>
+    <!-- Sidebar Top Items -->
+    <div class="space-y-1">
+      <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+        <div class="flex items-center space-x-3 text-white">
+          <i class="fas fa-home"></i>
+          <span>Dashboard</span>
+        </div>
+      </a>
 
-    <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
-      <div class="flex items-center space-x-3 text-white">
-        <i class="fas fa-file-alt"></i>
-        <span>Resources Overview</span>
-      </div>
-    </a>
+      <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+        <div class="flex items-center space-x-3 text-white">
+          <i class="fas fa-file-alt"></i>
+          <span>Resources Overview</span>
+        </div>
+      </a>
 
-    <a href="#" class="menu-item flex items-center justify-between bg-[#a6947e] px-3 py-2 rounded hover:bg-[#a6947e]">
-      <div class="flex items-center space-x-3 text-white">
-        <i class="fas fa-clipboard-check"></i>
-        <span>Booking Requests</span>
-      </div>
-    </a>
+      <a href="#" class="menu-item flex items-center justify-between bg-[#a6947e] px-3 py-2 rounded hover:bg-[#a6947e]">
+        <div class="flex items-center space-x-3 text-white">
+          <i class="fas fa-clipboard-check"></i>
+          <span>Booking Requests</span>
+        </div>
+      </a>
 
-    <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
-      <div class="flex items-center space-x-3 text-white">
-        <i class="fas fa-hourglass-half"></i>
-        <span>Waitlist</span>
-      </div>
-    </a>
-  </div>
+      <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+        <div class="flex items-center space-x-3 text-white">
+          <i class="fas fa-hourglass-half"></i>
+          <span>Waitlist</span>
+        </div>
+      </a>
+    </div>
 
-  <!-- Push Bottom Items -->
-  <div class="mt-auto space-y-1 pt-4">
-    <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
-      <div class="flex items-center space-x-3 text-white">
-        <i class="fas fa-user"></i>
-        <span>My Profile</span>
-      </div>
-    </a>
+    <!-- Push Bottom Items -->
+    <div class="mt-auto space-y-1 pt-4">
+      <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+        <div class="flex items-center space-x-3 text-white">
+          <i class="fas fa-user"></i>
+          <span>My Profile</span>
+        </div>
+      </a>
 
-    <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
-      <div class="flex items-center space-x-3 text-white">
-        <i class="fas fa-cog"></i>
-        <span>Settings</span>
-      </div>
-    </a>
+      <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+        <div class="flex items-center space-x-3 text-white">
+          <i class="fas fa-cog"></i>
+          <span>Settings</span>
+        </div>
+      </a>
 
-    <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
-      <div class="flex items-center space-x-3 text-white">
-        <i class="fas fa-question-circle"></i>
-        <span>Help & Support</span>
-      </div>
-    </a>
-  </div>
-</aside>
+      <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+        <div class="flex items-center space-x-3 text-white">
+          <i class="fas fa-question-circle"></i>
+          <span>Help & Support</span>
+        </div>
+      </a>
+    </div>
+  </aside>
 
+  <!-- Mobile Overlay -->
+  <div id="mobile-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
 
+  <!-- Desktop Sidebar -->
+  <aside class="side-nav bg-[#61584D] px-2 py-3 w-60 min-h-screen hidden md:block flex flex-col">
+    
+    <!-- TOP MENU ITEMS -->
+    <div class="space-y-1">
+      <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+        <div class="flex items-center space-x-3 text-white">
+          <i class="fas fa-home"></i>
+          <span>Dashboard</span>
+        </div>
+      </a>
 
-  <!-- Desktop Sidebar (Original) -->
-<aside class="side-nav bg-[#61584D] px-2 py-3 w-60 min-h-screen hidden md:block flex flex-col">
-  
-  <!-- TOP MENU ITEMS -->
-  <div class="space-y-1">
-    <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
-      <div class="flex items-center space-x-3 text-white">
-        <i class="fas fa-home"></i>
-        <span>Dashboard</span>
-      </div>
-    </a>
+      <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+        <div class="flex items-center space-x-3 text-white">
+          <i class="fas fa-file-alt"></i>
+          <span>Resources Overview</span>
+        </div>
+      </a>
 
-    <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
-      <div class="flex items-center space-x-3 text-white">
-        <i class="fas fa-file-alt"></i>
-        <span>Resources Overview</span>
-      </div>
-    </a>
+      <a href="#" class="menu-item flex items-center justify-between bg-[#a6947e] px-3 py-2 rounded hover:bg-[#a6947e]">
+        <div class="flex items-center space-x-3 text-white">
+          <i class="fas fa-clipboard-check"></i>
+          <span>Booking Requests</span>
+        </div>
+      </a>
 
-    <a href="#" class="menu-item flex items-center justify-between bg-[#a6947e] px-3 py-2 rounded hover:bg-[#a6947e]">
-      <div class="flex items-center space-x-3 text-white">
-        <i class="fas fa-clipboard-check"></i>
-        <span>Booking Requests</span>
-      </div>
-    </a>
+      <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+        <div class="flex items-center space-x-3 text-white">
+          <i class="fas fa-hourglass-half"></i>
+          <span>Waitlist</span>
+        </div>
+      </a>
+    </div>
 
-    <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
-      <div class="flex items-center space-x-3 text-white">
-        <i class="fas fa-hourglass-half"></i>
-        <span>Waitlist</span>
-      </div>
-    </a>
-  </div>
+    <!-- BOTTOM MENU ITEMS -->
+    <div class="space-y-1 pt-4 mt-60">
+      <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+        <div class="flex items-center space-x-3 text-white">
+          <i class="fas fa-user"></i>
+          <span>My Profile</span>
+        </div>
+      </a>
 
-  <!-- BOTTOM MENU ITEMS -->
-  <div class="space-y-1 pt-4 mt-60">
-    <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
-      <div class="flex items-center space-x-3 text-white">
-        <i class="fas fa-user"></i>
-        <span>My Profile</span>
-      </div>
-    </a>
+      <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+        <div class="flex items-center space-x-3 text-white">
+          <i class="fas fa-cog"></i>
+          <span>Settings</span>
+        </div>
+      </a>
 
-    <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
-      <div class="flex items-center space-x-3 text-white">
-        <i class="fas fa-cog"></i>
-        <span>Settings</span>
-      </div>
-    </a>
-
-    <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
-      <div class="flex items-center space-x-3 text-white">
-        <i class="fas fa-question-circle"></i>
-        <span>Help & Support</span>
-      </div>
-    </a>
-  </div>
-
-</aside>
-
+      <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+        <div class="flex items-center space-x-3 text-white">
+          <i class="fas fa-question-circle"></i>
+          <span>Help & Support</span>
+        </div>
+      </a>
+    </div>
+  </aside>
 
   <!-- Mobile Main Content -->
-  <main class="mobile-main md:hidden pt-14 px-4 pb-4">
+  <main class="mobile-main md:hidden pt-12 px-4 pb-4">
     <!-- Mobile Search Bar -->
     <div class="mb-4">
       <div class="relative">
@@ -264,7 +263,6 @@
         </div>
         <button id="mobile-filter-toggle" class="flex items-center gap-1 px-2 py-1 bg-gray-200 rounded text-sm">
           <i class="fas fa-filter"></i>
-
         </button>
       </div>
     </div>
@@ -318,26 +316,11 @@
     </div>
 
     <!-- Mobile Result Count -->
-    <p class="text-sm text-gray-600 mb-3" id="mobile-result-count">11 of 55 results</p>
+    <p class="text-sm text-gray-600 mb-3" id="mobile-result-count">Showing 13 results</p>
 
-    <!-- Mobile Table Container -->
-    <div class="mobile-table-wrapper overflow-x-auto border border-gray-300 rounded bg-white">
-      <table class="mobile-table w-full text-xs" style="min-width: 600px;">
-        <thead class="bg-[#eae0d5]">
-          <tr>
-            <th class="px-2 py-2 text-left border-b">Student Name</th>
-            <th class="px-2 py-2 text-left border-b">ID</th>
-            <th class="px-2 py-2 text-left border-b">Request Type</th>
-            <th class="px-2 py-2 text-left border-b">Requested Date</th>
-            <th class="px-2 py-2 text-left border-b">Submitted On</th>
-            <th class="px-2 py-2 text-left border-b">State</th>
-            <th class="px-2 py-2 text-left border-b"></th>
-          </tr>
-        </thead>
-        <tbody id="mobile-table-body">
-          <!-- Mobile table rows will be populated by JavaScript from the desktop table -->
-        </tbody>
-      </table>
+    <!-- Mobile Cards Container -->
+    <div id="mobile-cards-container" class="space-y-3">
+      <!-- Mobile cards will be populated by JavaScript -->
     </div>
 
     <!-- Mobile Pagination -->
@@ -346,16 +329,16 @@
     </div>
   </main>
 
-  <!-- Desktop Main Content (Original) -->
+  <!-- Desktop Main Content -->
   <main class="main-content ml-64 mt-16 px-6 py-8 hidden md:block">
     <h1 class="text-2xl font-bold mb-5">Booking Requests</h1>
 
-    <!-- Filter / Sort / Search (Original) -->
+    <!-- Filter / Sort / Search -->
     <div class="flex items-center justify-between border-b border-black pb-2 mb-1">
       <div class="flex items-center gap-5 pl-1">
         <span class="text-base font-semibold">Filter:</span>
         
-        <!-- Type Dropdown (Multi-select) -->
+        <!-- Type Dropdown -->
         <div class="dropdown-container" id="type-dropdown">
           <button class="dropdown-button" id="type-button">
             <span>Type</span>
@@ -374,13 +357,10 @@
             <div class="dropdown-option" data-value="Computer">
               <span>Computer</span>
             </div>
-            <div class="dropdown-option" data-value="C.program">
-              <span>C.program</span>
-            </div>
           </div>
         </div>
 
-        <!-- State Dropdown (Multi-select) -->
+        <!-- State Dropdown -->
         <div class="dropdown-container" id="state-dropdown">
           <button class="dropdown-button" id="state-button">
             <span>State</span>
@@ -400,13 +380,13 @@
         </div>
       </div>
 
-      <div class="flex items-center gap-4">
-        <!-- Sort -->
-        <div class="flex items-center gap-2 text-base font-medium pr-4 border-r border-black">
-          <i class="fas fa-sort text-xs"></i>
-          <span id="sort-label">Sort: Newest</span>
+      <!-- Sort and Search -->
+      <div class="flex items-center gap-5">
+        <div class="flex items-center gap-2">
+          <span class="text-base font-semibold">Sort:</span>
           <div class="dropdown-container" id="sort-dropdown">
-            <button class="dropdown-button-simple" id="sort-button">
+            <button class="dropdown-button" id="sort-button">
+              <span id="sort-label">Newest</span>
               <i class="fas fa-chevron-down"></i>
             </button>
             <div class="dropdown-menu hidden" id="sort-menu">
@@ -426,563 +406,135 @@
         <!-- Search -->
         <div class="relative">
           <input
-            id="search-input"
+            id="desktop-search-input"
             type="text"
             placeholder="Search"
-            class="bg-[#dcd5cc] text-sm pl-3 pr-8 py-1.5 rounded-full focus:outline-none shadow-sm"
+            class="bg-[#dcd5cc] text-sm pl-3 pr-8 py-1 rounded-full focus:outline-none"
           />
-          <i id="search-icon" class="fas fa-search absolute right-3 top-2 text-sm text-gray-600 cursor-pointer"></i>
+          <i id="desktop-search-icon" class="fas fa-search absolute right-3 top-1.5 text-sm text-gray-600 cursor-pointer"></i>
         </div>
       </div>
     </div>
 
-    <!-- Filter Chips and Results Container (Original) -->
-    <div class="flex items-center justify-between mb-3">
-      <!-- Filter Chips Container -->
-      <div class="filter-chips-container" id="filter-chips">
-        <!-- Filter chips will be dynamically added here -->
-      </div>
-      
-      <!-- Result Count -->
-      <p class="text-sm text-black font-medium mb-10 mt-3 text-gray-600" id="desktop-result-count">Showing 55 results</p>
+    <!-- Filter Chips -->
+    <div id="filter-chips" class="flex flex-wrap gap-2 mt-3 mb-4">
+      <!-- Filter chips will be populated by JavaScript -->
     </div>
 
-    <!-- Desktop Table (Original with all data) -->
-    <div class="table-container">
-      <table class="w-full table-auto border border-gray-300 bg-white text-sm" id="desktop-table">
-        <thead class="bg-[#eae0d5] text-left">
+    <!-- Result Count -->
+    <p class="text-sm text-gray-600 mb-3" id="desktop-result-count">Showing 13 results</p>
+
+    <!-- Desktop Table -->
+    <div class="table-container bg-white rounded border border-gray-300 overflow-x-auto">
+      <table class="w-full text-sm" id="desktop-table">
+        <thead class="bg-[#eae0d5]">
           <tr>
-            <th class="px-4 py-2 border-b">Student Name</th>
-            <th class="px-4 py-2 border-b">ID</th>
-            <th class="px-4 py-2 border-b">Request Type</th>
-            <th class="px-4 py-2 border-b">Requested Date</th>
-            <th class="px-4 py-2 border-b">Submitted On</th>
-            <th class="px-4 py-2 border-b">State</th>
-            <th class="px-4 py-2 border-b"></th>
+            <th class="px-4 py-3 text-left border-b">Student Name</th>
+            <th class="px-4 py-3 text-left border-b">ID</th>
+            <th class="px-4 py-3 text-left border-b">Request Type</th>
+            <th class="px-4 py-3 text-left border-b">Requested Date</th>
+            <th class="px-4 py-3 text-left border-b">Submitted On</th>
+            <th class="px-4 py-3 text-left border-b">State</th>
+            <th class="px-4 py-3 text-left border-b">Actions</th>
           </tr>
         </thead>
-        <tbody>
-          <tr class="border-b">
-            <td class="px-4 py-2">Bashayer Faraj</td>
-            <td class="px-4 py-2">23000123</td>
-            <td class="px-4 py-2">Meeting Room</td>
-            <td class="px-4 py-2">23/May/2025</td>
-            <td class="px-4 py-2">22/May/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Fatima Majid</td>
-            <td class="px-4 py-2">23000501</td>
-            <td class="px-4 py-2">Book</td>
-            <td class="px-4 py-2">19/May/2025</td>
-            <td class="px-4 py-2">18/May/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-check text-green-500 mr-1 text-xs"></i> <span class="text-black">Accepted</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Ayman Subhi</td>
-            <td class="px-4 py-2">23000139</td>
-            <td class="px-4 py-2">Magazine</td>
-            <td class="px-4 py-2">15/May/2025</td>
-            <td class="px-4 py-2">13/May/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-times text-red-500 mr-1 text-xs"></i> <span class="text-black">Rejected</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Nada Ibrahim</td>
-            <td class="px-4 py-2">23000141</td>
-            <td class="px-4 py-2">Book</td>
-            <td class="px-4 py-2">14/May/2025</td>
-            <td class="px-4 py-2">13/May/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Emma Anderson</td>
-            <td class="px-4 py-2">23000621</td>
-            <td class="px-4 py-2">Magazine</td>
-            <td class="px-4 py-2">14/May/2025</td>
-            <td class="px-4 py-2">12/May/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Leen Hassan</td>
-            <td class="px-4 py-2">23000150</td>
-            <td class="px-4 py-2">Meeting Room</td>
-            <td class="px-4 py-2">13/May/2025</td>
-            <td class="px-4 py-2">12/May/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Yusuf Kamal</td>
-            <td class="px-4 py-2">23000292</td>
-            <td class="px-4 py-2">Book</td>
-            <td class="px-4 py-2">13/May/2025</td>
-            <td class="px-4 py-2">12/May/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-check text-green-500 mr-1 text-xs"></i> <span class="text-black">Accepted</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Olivia Carter</td>
-            <td class="px-4 py-2">23000861</td>
-            <td class="px-4 py-2">Book</td>
-            <td class="px-4 py-2">13/May/2025</td>
-            <td class="px-4 py-2">12/May/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Ahmad Khaleel</td>
-            <td class="px-4 py-2">23000720</td>
-            <td class="px-4 py-2">Computer</td>
-            <td class="px-4 py-2">12/May/2025</td>
-            <td class="px-4 py-2">11/May/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-times text-red-500 mr-1 text-xs"></i> <span class="text-black">Rejected</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Salma Nasser</td>
-            <td class="px-4 py-2">23001000</td>
-            <td class="px-4 py-2">Computer</td>
-            <td class="px-4 py-2">11/May/2025</td>
-            <td class="px-4 py-2">10/May/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Khalid Omar</td>
-            <td class="px-4 py-2">23001001</td>
-            <td class="px-4 py-2">Book</td>
-            <td class="px-4 py-2">10/May/2025</td>
-            <td class="px-4 py-2">09/May/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Layla Noor</td>
-            <td class="px-4 py-2">23001002</td>
-            <td class="px-4 py-2">Magazine</td>
-            <td class="px-4 py-2">10/May/2025</td>
-            <td class="px-4 py-2">09/May/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Zaid Mahdi</td>
-            <td class="px-4 py-2">23001003</td>
-            <td class="px-4 py-2">Book</td>
-            <td class="px-4 py-2">09/May/2025</td>
-            <td class="px-4 py-2">08/May/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Sara Ahmed</td>
-            <td class="px-4 py-2">23001004</td>
-            <td class="px-4 py-2">Meeting Room</td>
-            <td class="px-4 py-2">08/May/2025</td>
-            <td class="px-4 py-2">07/May/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-check text-green-500 mr-1 text-xs"></i> <span class="text-black">Accepted</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Omar Hassan</td>
-            <td class="px-4 py-2">23001005</td>
-            <td class="px-4 py-2">Computer</td>
-            <td class="px-4 py-2">07/May/2025</td>
-            <td class="px-4 py-2">06/May/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-times text-red-500 mr-1 text-xs"></i> <span class="text-black">Rejected</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Maryam Ali</td>
-            <td class="px-4 py-2">23001006</td>
-            <td class="px-4 py-2">Book</td>
-            <td class="px-4 py-2">06/May/2025</td>
-            <td class="px-4 py-2">05/May/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Hassan Mahmoud</td>
-            <td class="px-4 py-2">23001007</td>
-            <td class="px-4 py-2">Magazine</td>
-            <td class="px-4 py-2">05/May/2025</td>
-            <td class="px-4 py-2">04/May/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-check text-green-500 mr-1 text-xs"></i> <span class="text-black">Accepted</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Fatima Hassan</td>
-            <td class="px-4 py-2">23001008</td>
-            <td class="px-4 py-2">Book</td>
-            <td class="px-4 py-2">04/May/2025</td>
-            <td class="px-4 py-2">03/May/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Ali Rashid</td>
-            <td class="px-4 py-2">23001009</td>
-            <td class="px-4 py-2">Computer</td>
-            <td class="px-4 py-2">03/May/2025</td>
-            <td class="px-4 py-2">02/May/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-times text-red-500 mr-1 text-xs"></i> <span class="text-black">Rejected</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Nour Khalil</td>
-            <td class="px-4 py-2">23001010</td>
-            <td class="px-4 py-2">Meeting Room</td>
-            <td class="px-4 py-2">02/May/2025</td>
-            <td class="px-4 py-2">01/May/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <!-- Additional rows to reach 55 total -->
-          <tr class="border-b">
-            <td class="px-4 py-2">Ahmed Saeed</td>
-            <td class="px-4 py-2">23001011</td>
-            <td class="px-4 py-2">Book</td>
-            <td class="px-4 py-2">01/May/2025</td>
-            <td class="px-4 py-2">30/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-check text-green-500 mr-1 text-xs"></i> <span class="text-black">Accepted</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Lina Youssef</td>
-            <td class="px-4 py-2">23001012</td>
-            <td class="px-4 py-2">Magazine</td>
-            <td class="px-4 py-2">30/Apr/2025</td>
-            <td class="px-4 py-2">29/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Karim Nasser</td>
-            <td class="px-4 py-2">23001013</td>
-            <td class="px-4 py-2">Computer</td>
-            <td class="px-4 py-2">29/Apr/2025</td>
-            <td class="px-4 py-2">28/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-times text-red-500 mr-1 text-xs"></i> <span class="text-black">Rejected</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Rania Farouk</td>
-            <td class="px-4 py-2">23001014</td>
-            <td class="px-4 py-2">Book</td>
-            <td class="px-4 py-2">28/Apr/2025</td>
-            <td class="px-4 py-2">27/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Mahmoud Saleh</td>
-            <td class="px-4 py-2">23001015</td>
-            <td class="px-4 py-2">Meeting Room</td>
-            <td class="px-4 py-2">27/Apr/2025</td>
-            <td class="px-4 py-2">26/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-check text-green-500 mr-1 text-xs"></i> <span class="text-black">Accepted</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Dina Mostafa</td>
-            <td class="px-4 py-2">23001016</td>
-            <td class="px-4 py-2">Magazine</td>
-            <td class="px-4 py-2">26/Apr/2025</td>
-            <td class="px-4 py-2">25/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Tarek Abdel</td>
-            <td class="px-4 py-2">23001017</td>
-            <td class="px-4 py-2">Book</td>
-            <td class="px-4 py-2">25/Apr/2025</td>
-            <td class="px-4 py-2">24/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-times text-red-500 mr-1 text-xs"></i> <span class="text-black">Rejected</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Hala Zaki</td>
-            <td class="px-4 py-2">23001018</td>
-            <td class="px-4 py-2">Computer</td>
-            <td class="px-4 py-2">24/Apr/2025</td>
-            <td class="px-4 py-2">23/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Yasser Fouad</td>
-            <td class="px-4 py-2">23001019</td>
-            <td class="px-4 py-2">Book</td>
-            <td class="px-4 py-2">23/Apr/2025</td>
-            <td class="px-4 py-2">22/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-check text-green-500 mr-1 text-xs"></i> <span class="text-black">Accepted</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Amira Gamal</td>
-            <td class="px-4 py-2">23001020</td>
-            <td class="px-4 py-2">Meeting Room</td>
-            <td class="px-4 py-2">22/Apr/2025</td>
-            <td class="px-4 py-2">21/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Khaled Mansour</td>
-            <td class="px-4 py-2">23001021</td>
-            <td class="px-4 py-2">Magazine</td>
-            <td class="px-4 py-2">21/Apr/2025</td>
-            <td class="px-4 py-2">20/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-times text-red-500 mr-1 text-xs"></i> <span class="text-black">Rejected</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Noha Adel</td>
-            <td class="px-4 py-2">23001022</td>
-            <td class="px-4 py-2">Book</td>
-            <td class="px-4 py-2">20/Apr/2025</td>
-            <td class="px-4 py-2">19/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Sherif Magdy</td>
-            <td class="px-4 py-2">23001023</td>
-            <td class="px-4 py-2">Computer</td>
-            <td class="px-4 py-2">19/Apr/2025</td>
-            <td class="px-4 py-2">18/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-check text-green-500 mr-1 text-xs"></i> <span class="text-black">Accepted</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Rana Hosny</td>
-            <td class="px-4 py-2">23001024</td>
-            <td class="px-4 py-2">Book</td>
-            <td class="px-4 py-2">18/Apr/2025</td>
-            <td class="px-4 py-2">17/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Mostafa Reda</td>
-            <td class="px-4 py-2">23001025</td>
-            <td class="px-4 py-2">Meeting Room</td>
-            <td class="px-4 py-2">17/Apr/2025</td>
-            <td class="px-4 py-2">16/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-times text-red-500 mr-1 text-xs"></i> <span class="text-black">Rejected</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Yasmin Tamer</td>
-            <td class="px-4 py-2">23001026</td>
-            <td class="px-4 py-2">Magazine</td>
-            <td class="px-4 py-2">16/Apr/2025</td>
-            <td class="px-4 py-2">15/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Adel Farid</td>
-            <td class="px-4 py-2">23001027</td>
-            <td class="px-4 py-2">Book</td>
-            <td class="px-4 py-2">15/Apr/2025</td>
-            <td class="px-4 py-2">14/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-check text-green-500 mr-1 text-xs"></i> <span class="text-black">Accepted</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Mona Saber</td>
-            <td class="px-4 py-2">23001028</td>
-            <td class="px-4 py-2">Computer</td>
-            <td class="px-4 py-2">14/Apr/2025</td>
-            <td class="px-4 py-2">13/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Walid Ashraf</td>
-            <td class="px-4 py-2">23001029</td>
-            <td class="px-4 py-2">Book</td>
-            <td class="px-4 py-2">13/Apr/2025</td>
-            <td class="px-4 py-2">12/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-times text-red-500 mr-1 text-xs"></i> <span class="text-black">Rejected</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Eman Kamel</td>
-            <td class="px-4 py-2">23001030</td>
-            <td class="px-4 py-2">Meeting Room</td>
-            <td class="px-4 py-2">12/Apr/2025</td>
-            <td class="px-4 py-2">11/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Bassem Lotfy</td>
-            <td class="px-4 py-2">23001031</td>
-            <td class="px-4 py-2">Magazine</td>
-            <td class="px-4 py-2">11/Apr/2025</td>
-            <td class="px-4 py-2">10/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-check text-green-500 mr-1 text-xs"></i> <span class="text-black">Accepted</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Heba Shawky</td>
-            <td class="px-4 py-2">23001032</td>
-            <td class="px-4 py-2">Book</td>
-            <td class="px-4 py-2">10/Apr/2025</td>
-            <td class="px-4 py-2">09/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Tamer Helmy</td>
-            <td class="px-4 py-2">23001033</td>
-            <td class="px-4 py-2">Computer</td>
-            <td class="px-4 py-2">09/Apr/2025</td>
-            <td class="px-4 py-2">08/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-times text-red-500 mr-1 text-xs"></i> <span class="text-black">Rejected</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Ghada Fathy</td>
-            <td class="px-4 py-2">23001034</td>
-            <td class="px-4 py-2">Book</td>
-            <td class="px-4 py-2">08/Apr/2025</td>
-            <td class="px-4 py-2">07/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Medhat Wagdy</td>
-            <td class="px-4 py-2">23001035</td>
-            <td class="px-4 py-2">Meeting Room</td>
-            <td class="px-4 py-2">07/Apr/2025</td>
-            <td class="px-4 py-2">06/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-check text-green-500 mr-1 text-xs"></i> <span class="text-black">Accepted</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Nagwa Samir</td>
-            <td class="px-4 py-2">23001036</td>
-            <td class="px-4 py-2">Magazine</td>
-            <td class="px-4 py-2">06/Apr/2025</td>
-            <td class="px-4 py-2">05/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Hazem Nabil</td>
-            <td class="px-4 py-2">23001037</td>
-            <td class="px-4 py-2">Book</td>
-            <td class="px-4 py-2">05/Apr/2025</td>
-            <td class="px-4 py-2">04/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-times text-red-500 mr-1 text-xs"></i> <span class="text-black">Rejected</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Soha Ramzy</td>
-            <td class="px-4 py-2">23001038</td>
-            <td class="px-4 py-2">Computer</td>
-            <td class="px-4 py-2">04/Apr/2025</td>
-            <td class="px-4 py-2">03/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Amr Essam</td>
-            <td class="px-4 py-2">23001039</td>
-            <td class="px-4 py-2">Book</td>
-            <td class="px-4 py-2">03/Apr/2025</td>
-            <td class="px-4 py-2">02/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-check text-green-500 mr-1 text-xs"></i> <span class="text-black">Accepted</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Dalia Osama</td>
-            <td class="px-4 py-2">23001040</td>
-            <td class="px-4 py-2">Meeting Room</td>
-            <td class="px-4 py-2">02/Apr/2025</td>
-            <td class="px-4 py-2">01/Apr/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Hany Galal</td>
-            <td class="px-4 py-2">23001041</td>
-            <td class="px-4 py-2">Magazine</td>
-            <td class="px-4 py-2">01/Apr/2025</td>
-            <td class="px-4 py-2">31/Mar/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-times text-red-500 mr-1 text-xs"></i> <span class="text-black">Rejected</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Ola Maher</td>
-            <td class="px-4 py-2">23001042</td>
-            <td class="px-4 py-2">Book</td>
-            <td class="px-4 py-2">31/Mar/2025</td>
-            <td class="px-4 py-2">30/Mar/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Samy Farouk</td>
-            <td class="px-4 py-2">23001043</td>
-            <td class="px-4 py-2">Computer</td>
-            <td class="px-4 py-2">30/Mar/2025</td>
-            <td class="px-4 py-2">29/Mar/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-check text-green-500 mr-1 text-xs"></i> <span class="text-black">Accepted</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Nadia Wahba</td>
-            <td class="px-4 py-2">23001044</td>
-            <td class="px-4 py-2">Book</td>
-            <td class="px-4 py-2">29/Mar/2025</td>
-            <td class="px-4 py-2">28/Mar/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Fady Nader</td>
-            <td class="px-4 py-2">23001045</td>
-            <td class="px-4 py-2">Meeting Room</td>
-            <td class="px-4 py-2">28/Mar/2025</td>
-            <td class="px-4 py-2">27/Mar/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-times text-red-500 mr-1 text-xs"></i> <span class="text-black">Rejected</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
-          <tr class="border-b">
-            <td class="px-4 py-2">Reem Sherif</td>
-            <td class="px-4 py-2">23001046</td>
-            <td class="px-4 py-2">Magazine</td>
-            <td class="px-4 py-2">27/Mar/2025</td>
-            <td class="px-4 py-2">26/Mar/2025</td>
-            <td class="px-4 py-2"><i class="fas fa-circle text-yellow-500 mr-1 text-xs"></i> <span class="text-black">Pending</span></td>
-            <td class="px-4 py-2 text-blue-600 underline"><a href="#">View &gt;</a></td>
-          </tr>
+        <tbody id="desktop-table-body">
+          <!-- Table rows will be populated by JavaScript -->
         </tbody>
       </table>
     </div>
   </main>
+  
+  <!-- PWA Installation Script -->
+  <script>
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js')
+          .then(function(registration) {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }, function(err) {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+      });
+    }
 
-  <script src="librarianBookingRequestsJscript_responsive.js"></script>
-  <script src="indexedDB2.js"></script>
+    // PWA Install prompt
+    let deferredPrompt;
+    const installButtons = document.querySelectorAll('.install-btn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent Chrome 67 and earlier from automatically showing the prompt
+      e.preventDefault();
+      // Stash the event so it can be triggered later
+      deferredPrompt = e;
+      
+      // Update install buttons to show they can install
+      installButtons.forEach(btn => {
+        btn.style.display = 'block';
+        btn.innerHTML = '<i class="fa-solid fa-download"></i> <span class="font-bold">Install LibraNet</span>';
+      });
+    });
+
+    // Handle install button clicks
+    installButtons.forEach(btn => {
+      btn.addEventListener('click', async () => {
+        if (deferredPrompt) {
+          // Show the install prompt
+          deferredPrompt.prompt();
+          // Wait for the user to respond to the prompt
+          const { outcome } = await deferredPrompt.userChoice;
+          console.log(`User response to the install prompt: ${outcome}`);
+          // Clear the deferredPrompt variable
+          deferredPrompt = null;
+        } else {
+          // Fallback: download a file with installation instructions
+          const installData = {
+            appName: "LibraNet Booking System",
+            version: "1.0.0",
+            description: "A comprehensive booking management system for libraries",
+            installationInstructions: [
+              "1. Open this website in Chrome, Edge, or Safari",
+              "2. Look for the 'Install' button in the address bar",
+              "3. Click 'Install' to add LibraNet to your device",
+              "4. The app will work offline once installed"
+            ],
+            features: [
+              "Offline functionality",
+              "Responsive design for desktop and mobile",
+              "Real-time notifications",
+              "Advanced filtering and search",
+              "Accessible interface"
+            ],
+            downloadDate: new Date().toISOString()
+          };
+          
+          const blob = new Blob([JSON.stringify(installData, null, 2)], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'LibraNet-Installation-Guide.json';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+        }
+      });
+    });
+
+    // Handle successful installation
+    window.addEventListener('appinstalled', (evt) => {
+      console.log('LibraNet was installed successfully');
+      installButtons.forEach(btn => {
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> <span class="font-bold">Installed</span>';
+        btn.disabled = true;
+      });
+    });
+  </script>
+  
+  <script src="merged-booking-requests.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
 
 
 
