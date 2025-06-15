@@ -1,15 +1,5 @@
 // Corrected JavaScript with HTML table data and proper mobile functionality
 document.addEventListener('DOMContentLoaded', function() {
-
-    const dashboard = document.getElementById("dboard");
-    if (dashboard) {
-        dashboard.addEventListener("click", function (e) {
-            e.preventDefault();
-            window.location.href = "index.html";
-        });
-    }
-
-      
     // State management
     const selectedFilters = {
         type: [],
@@ -638,7 +628,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    
+    // Dashboard navigation
+    const dashboard = document.getElementById("dboard");
+    if (dashboard) {
+        dashboard.addEventListener("click", function () {
+            window.location.href = "index.html";
+        });
+    }
 
     // Initialize the application
     filterAndSortTable();
