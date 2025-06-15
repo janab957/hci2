@@ -2,7 +2,7 @@
   "name": "LibraNet",
   "short_name": "LibraNet",
   "description": "A library management system",
-  "start_url": "/librarianDashboard_responsive.html",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#18354a",
