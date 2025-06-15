@@ -4,12 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <title>LibraNet</title>
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
   <!-- External CSS -->
-  <link rel="stylesheet" href="responsive_styles.css" />
+  <link rel="stylesheet" href="overallCSS_final.css" />
 </head>
 <body class="bg-gray-100">
 
@@ -34,13 +37,13 @@
     </div>
   </header>
 
-  <!-- Desktop Top Navigation (Original - Preserved) -->
+  <!-- Desktop Top Navigation (Original - Completely Preserved) -->
   <header class="top-nav hidden md:flex">
     <div class="flex items-center space-x-4">
       <i class="fas fa-book-open text-2xl"></i>
       <span class="text-xl font-bold">LibraNet  </span>
-      <a href="#"> <i class="fas fa-home"></i> Dashboard</a>
-      
+	  <a href="#"> <i class="fas fa-home"></i> Dashboard</a>
+	  
       <!-- Categories with dropdown -->
       <div class="relative">
         <button id="categories-btn" class="w-full flex items-center justify-between px-4 py-2 text-left hover:bg-[#6D7F96] transition">
@@ -60,6 +63,11 @@
       </div>
     </div>
     <nav class="space-x-6">
+      <!-- Install Button (NEW - Added to the left of notifications) -->
+      <button class="install-btn px-4 py-2 bg-[#18354a] text-white rounded-full hover:bg-[#415977] transition">
+       <i class="fa-solid fa-download"></i> <span class="font-bold">Install LibraNet</span>
+      </button>
+      
       <a href="javascript:void(0);" id="notification-btn" class="relative px-4 py-2 hover:bg-[#6D7F96] text-white rounded transition">
         <i class="fas fa-bell"></i> Notifications
       </a>
@@ -85,14 +93,6 @@
         </div>
       </div>
     </nav>
-    
-    <!-- Install buttons (preserved from original) -->
-    <button aria-label="Install App" class="install-btn p-2 text-white rounded-full hover:bg-[#415977] transition md:hidden">
-      <i class="fa-solid fa-download"></i>
-    </button>
-    <button class="install-btn hidden md:inline-flex items-center px-4 py-2 bg-[#18354a] text-white rounded-full hover:bg-[#415977] transition" style="margin-left: 1rem;">
-      <i class="fa-solid fa-download" style="margin-right: 0.5rem;"></i>Install LibraNet
-    </button>
   </header>
 
   <!-- Mobile Notification Full Screen -->
@@ -316,5 +316,4 @@
   <script src="responsive_script.js"></script>
 </body>
 </html>
-
 
