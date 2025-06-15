@@ -113,5 +113,47 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   });
+
+  // PWA Install functionality
+  let deferredPrompt;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+
+    document.querySelectorAll('.install-btn').forEach(btn => {
+      btn.style.display = 'inline-block';
+      btn.disabled = false;
+    });
+  });
+
+  document.querySelectorAll('.install-btn').forEach(button => {
+    button.style.display = 'none';
+    button.disabled = true;
+
+    button.addEventListener('click', async () => {
+      if (!deferredPrompt) {
+        alert('Install prompt not available yet. Please try again later.');
+        return;
+      }
+      deferredPrompt.prompt();
+
+      const choiceResult = await deferredPrompt.userChoice;
+
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+
+      deferredPrompt = null;
+
+      document.querySelectorAll('.install-btn').forEach(btn => {
+        btn.style.display = 'none';
+        btn.disabled = true;
+      });
+    });
+  });
 });
+
 
