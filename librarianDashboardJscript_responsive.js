@@ -1,4 +1,4 @@
-console.log("✅ JS Loaded");
+
 
 document.addEventListener("DOMContentLoaded", function () {
   const notificationToggle = document.getElementById("notification-toggle");
@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("/service-worker.js")
+    navigator.serviceWorker.register("service-worker.js")
       .then(registration => {
         console.log("Service Worker registered: ", registration);
       })
