@@ -1,5 +1,6 @@
 // Merged JavaScript for LibraNet Booking Requests - Mobile Responsive
 document.addEventListener('DOMContentLoaded', function() {
+    const bookingRequests = document.getElementById("booking-requests");
     // Sample data for booking requests
     const bookingRequests = [
         { id: 1, studentName: "Bashayer Faraj", studentId: "23000123", requestType: "Meeting Room", requestedDate: "24/May/2025", submittedOn: "22/May/2025", state: "Pending", roomNumber: "203", capacity: "6 Students", timeSlot: "10:15 AM - 1:15 PM", reason: "Preparation for group project presentation" },
@@ -809,6 +810,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize the application
     init();
+
+    // Redirect to libranet3.html when "Booking Requests" is clicked
+  bookingRequests.addEventListener("click", function () {
+    window.location.href = "librarianDashboard_responsive.html";
+  });
+  
 });
 
 
