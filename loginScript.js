@@ -1,54 +1,78 @@
-// Toggle password visibility
-document.getElementById("togglePassword").addEventListener("click", function () {
-  const passwordField = document.getElementById("password");
-  const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
-  passwordField.setAttribute("type", type);
-  this.querySelector("i").classList.toggle("fa-eye");
-  this.querySelector("i").classList.toggle("fa-eye-slash");
-});
+// Hamburger menu functionality for mobile sidebar
+    document.addEventListener("DOMContentLoaded", function () {
+      const hamburger = document.getElementById("hamburger");
+      const sidebar = document.getElementById("sidebar");
 
-// Enable login button only if email and password meet basic validation
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
-const loginBtn = document.getElementById("loginBtn");
+      if (hamburger && sidebar) {
+        hamburger.addEventListener("click", function () {
+          sidebar.classList.toggle("hidden");
+        });
+      }
+    });
 
-function validateInputs() {
-  const emailValid = emailInput.value.includes("@");
-  const passwordValid = passwordInput.value.length >= 8;
+    // Password toggle functionality
+    document.addEventListener("DOMContentLoaded", function () {
+      const togglePassword = document.getElementById("togglePassword");
+      const passwordField = document.getElementById("password");
 
-  document.getElementById("emailError").classList.toggle("hidden", emailValid);
-  document.getElementById("passwordError").classList.toggle("hidden", passwordValid);
-  loginBtn.disabled = !(emailValid && passwordValid);
-  loginBtn.className = loginBtn.disabled ? "btn-disabled" : "btn-enabled";
-}
+      if (togglePassword && passwordField) {
+        togglePassword.addEventListener("click", function () {
+          const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
+          passwordField.setAttribute("type", type);
 
-emailInput.addEventListener("input", validateInputs);
-passwordInput.addEventListener("input", validateInputs);
+          const icon = togglePassword.querySelector("i");
+          if (type === "password") {
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+          } else {
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+          }
+        });
+      }
+    });
 
-// Login action
-loginBtn.addEventListener("click", (e) => {
-  e.preventDefault();
+    // Form validation
+    document.addEventListener("DOMContentLoaded", function () {
+      const emailField = document.getElementById("email");
+      const passwordField = document.getElementById("password");
+      const loginBtn = document.getElementById("loginBtn");
+      const emailError = document.getElementById("emailError");
+      const passwordError = document.getElementById("passwordError");
 
-  // Optional: add final validation check here again if needed
+      function validateForm() {
+        const email = emailField.value.trim();
+        const password = passwordField.value.trim();
 
-  // Show success alert
-  alert("✅ You are now logged in!");
+        let isValid = true;
 
-  // Redirect to dashboard after short delay
-  setTimeout(() => {
-    window.location.href = "librarianDashboard_responsive.html"; // <-- change this to your dashboard file
-  }, 500); // 0.5 second delay
-});
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email || !emailRegex.test(email)) {
+          emailError.classList.remove("hidden");
+          isValid = false;
+        } else {
+          emailError.classList.add("hidden");
+        }
 
+        // Password validation
+        if (!password || password.length < 8) {
+          passwordError.classList.remove("hidden");
+          isValid = false;
+        } else {
+          passwordError.classList.add("hidden");
+        }
 
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("service-worker2.js")
-      .then(registration => {
-        console.log("Service Worker registered: ", registration);
-      })
-      .catch(error => {
-        console.error("Service Worker registration failed: ", error);
-      });
-  });
-}
+        // Update button state
+        if (isValid && email && password) {
+          loginBtn.disabled = false;
+          loginBtn.className = "btn-enabled";
+        } else {
+          loginBtn.disabled = true;
+          loginBtn.className = "btn-disabled";
+        }
+      }
+
+      emailField.addEventListener("input", validateForm);
+      passwordField.addEventListener("input", validateForm);
+    });
