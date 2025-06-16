@@ -5,7 +5,7 @@ self.addEventListener('install', (event) => {
         '/',
         '/index.html',
         '/notifications.html',
-		'/loginhtml.html',
+		'/studentDashboard_responsive.html',
 		'/librarianBookingRequests_responsive.html',
         '/overallCSS_responsive.css',
 		'/logincss.css',
