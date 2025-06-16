@@ -76,97 +76,102 @@
 
   <!-- Sidebar -->
   <div class="flex flex-1 pt-[48px] md:pt-[64px]">
-<aside id="sidebar" class="side-nav bg-[#61584D] px-2 py-3 w-60 min-h-screen hidden md:flex flex-col fixed left-0 top-[48px] md:top-[64px] z-40">
-  <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
-    <div class="flex items-center space-x-3 text-white">
-      <i class="fas fa-home"></i>
-      <span>Dashboard</span>
-    </div>
-    <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
-  </a>
+    <aside id="sidebar" class="side-nav bg-[#61584D] px-2 py-3 w-60 min-h-screen hidden md:flex flex-col fixed left-0 top-[48px] md:top-[64px] z-40">
+      <!-- Top section -->
+      <div class="space-y-1">
+        <a href="#" class="menu-item flex items-center justify-between bg-[#a6947e] px-3 py-2 rounded hover:bg-[#a6947e]">
+          <div class="flex items-center space-x-3 text-white">
+            <i class="fas fa-home"></i>
+            <span>Dashboard</span>
+          </div>
+          <i class="fas fa-chevron-right text-sm text-white arrow"></i>
+        </a>
 
-  <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
-    <div class="flex items-center space-x-3 text-white">
-      <i class="fas fa-book"></i>
-      <span>Books</span>
-    </div>
-    <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
-  </a>
+        <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+          <div class="flex items-center space-x-3 text-white">
+            <i class="fas fa-book"></i>
+            <span>Books</span>
+          </div>
+          <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
+        </a>
 
-  <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
-    <div class="flex items-center space-x-3 text-white">
-      <i class="fas fa-newspaper"></i>
-      <span>Magazines</span>
-    </div>
-    <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
-  </a>
+        <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+          <div class="flex items-center space-x-3 text-white">
+            <i class="fas fa-newspaper"></i>
+            <span>Magazines</span>
+          </div>
+          <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
+        </a>
 
-  <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
-    <div class="flex items-center space-x-3 text-white">
-      <i class="fas fa-desktop"></i>
-      <span>Computers</span>
-    </div>
-    <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
-  </a>
+        <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+          <div class="flex items-center space-x-3 text-white">
+            <i class="fas fa-desktop"></i>
+            <span>Computers</span>
+          </div>
+          <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
+        </a>
 
-  <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
-    <div class="flex items-center space-x-3 text-white">
-      <i class="fas fa-code"></i>
-      <span>Computer Programs</span>
-    </div>
-    <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
-  </a>
+        <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+          <div class="flex items-center space-x-3 text-white">
+            <i class="fas fa-code"></i>
+            <span>Computer Programs</span>
+          </div>
+          <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
+        </a>
 
-  <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
-    <div class="flex items-center space-x-3 text-white">
-      <i class="fas fa-door-open"></i>
-      <span>Meeting Rooms</span>
-    </div>
-    <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
-  </a>
+        <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+          <div class="flex items-center space-x-3 text-white">
+            <i class="fas fa-door-open"></i>
+            <span>Meeting Rooms</span>
+          </div>
+          <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
+        </a>
 
-  <a href="#" class="menu-item flex items-center justify-between bg-[#a6947e] px-3 py-2 rounded hover:bg-[#a6947e]">
-    <div class="flex items-center space-x-3 text-white">
-      <i class="fas fa-shopping-cart"></i>
-      <span>My Bookings</span>
-    </div>
-    <i class="fas fa-chevron-right text-sm text-white arrow"></i>
-  </a>
+        <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+          <div class="flex items-center space-x-3 text-white">
+            <i class="fas fa-shopping-cart"></i>
+            <span>My Bookings</span>
+          </div>
+          <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
+        </a>
+      </div>
 
-  <hr class="my-2 border-white/30" />
+      <!-- Bottom section: spaced downward but not to bottom -->
+      <div class="space-y-1 pt-4 mt-32">
+        <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+          <div class="flex items-center space-x-3 text-white">
+            <i class="fas fa-user"></i>
+            <span>My Profile</span>
+          </div>
+          <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
+        </a>
 
-  <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
-    <div class="flex items-center space-x-3 text-white">
-      <i class="fas fa-user"></i>
-      <span>My Profile</span>
-    </div>
-    <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
-  </a>
+        <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+          <div class="flex items-center space-x-3 text-white">
+            <i class="fas fa-id-card"></i>
+            <span>My Library Cards</span>
+          </div>
+          <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
+        </a>
 
-  <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
-    <div class="flex items-center space-x-3 text-white">
-      <i class="fas fa-id-card"></i>
-      <span>My Library Cards</span>
-    </div>
-    <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
-  </a>
+        <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+          <div class="flex items-center space-x-3 text-white">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </div>
+          <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
+        </a>
 
-  <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
-    <div class="flex items-center space-x-3 text-white">
-      <i class="fas fa-cog"></i>
-      <span>Settings</span>
-    </div>
-    <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
-  </a>
+        <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+          <div class="flex items-center space-x-3 text-white">
+            <i class="fas fa-question-circle"></i>
+            <span>Help & Support</span>
+          </div>
+          <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
+        </a>
+      </div>
+    </aside>
 
-  <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
-    <div class="flex items-center space-x-3 text-white">
-      <i class="fas fa-question-circle"></i>
-      <span>Help & Support</span>
-    </div>
-    <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
-  </a>
-</aside>
 
 
   <!-- Main Content -->
