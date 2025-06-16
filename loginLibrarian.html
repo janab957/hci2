@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LibraNet - Login</title>
+
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="logincss.css" />
-  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="login.css" />
+
+ 
 </head>
+
 <body class="bg-gray-100 min-h-screen flex flex-col">
 
   <!-- Mobile Topbar -->
-  <header class="top-nav flex justify-between items-center px-4 py-2 bg-[#18354a] text-white shadow md:hidden fixed top-0 left-0 right-0 z-50">
+  <header
+    class="top-nav flex justify-between items-center px-4 py-2 bg-[#18354a] text-white shadow md:hidden fixed top-0 left-0 right-0 z-50">
     <button id="hamburger" class="text-2xl">
       <i class="fas fa-bars"></i>
     </button>
@@ -26,7 +34,8 @@
   </header>
 
   <!-- Desktop Topbar -->
-  <header class="top-nav hidden md:flex justify-between items-center px-6 py-4 bg-[#18354a] text-white shadow fixed top-0 left-0 right-0 z-50">
+  <header
+    class="top-nav hidden md:flex justify-between items-center px-6 py-4 bg-[#18354a] text-white shadow fixed top-0 left-0 right-0 z-50">
     <div class="flex items-center space-x-6">
       <i class="fas fa-book-open text-2xl"></i>
       <span class="text-xl font-bold">LibraNet</span>
@@ -36,28 +45,52 @@
     </nav>
   </header>
 
+  <!-- Sidebar -->
   <div class="flex flex-1 pt-[48px] md:pt-[64px]">
-    <!-- Sidebar -->
-    <aside id="sidebar" class="side-nav bg-[#61584D] px-2 py-3 w-60 min-h-screen hidden md:flex flex-col fixed left-0 top-[48px] md:top-[64px] z-40"></aside>
+    <aside id="sidebar" class="side-nav bg-[#61584D] px-2 py-3 w-60 hidden md:flex flex-col fixed left-0 top-[48px] md:top-[64px] z-40
+         h-[calc(100vh-48px)] md:h-[calc(100vh-64px)]">
+
+      <!-- Other sidebar content can go here -->
+
+      <!-- Bottom section: pushed down using mt-auto -->
+      <div class="space-y-1 pt-4 mt-auto">
+        <a href="#" class="menu-item flex items-center justify-between px-3 py-2 rounded hover:bg-[#a6947e]">
+          <div class="flex items-center space-x-3 text-white">
+            <i class="fas fa-question-circle"></i>
+            <span>Help & Support</span>
+          </div>
+          <i class="fas fa-chevron-right text-sm text-white arrow hidden"></i>
+        </a>
+      </div>
+    </aside>
 
     <!-- Main Content -->
-    <main class="main-content flex-1 px-4 md:ml-60 md:px-6 flex justify-center items-start min-h-[calc(100vh-6rem)] pt-6">
+    <main
+      class="main-content flex-1 px-4 md:ml-60 md:px-6 flex justify-center items-start min-h-[calc(100vh-6rem)] pt-6">
       <div class="login-box text-center">
         <h2 class="text-2xl font-semibold mb-12">Login as a Librarian</h2>
 
+        <!-- Email input -->
         <div class="flex flex-col md:flex-row items-center mb-4 w-full max-w-[650px] mx-auto">
           <label for="email" class="label mb-2 md:mb-0 md:mr-4 text-left w-full md:w-auto">Email:</label>
           <input type="text" id="email" placeholder="example@Libranet.ac.ae" class="input-field" />
-          <p id="emailError" class="text-sm text-red-500 mt-1 hidden text-left w-full pl-2 md:pl-0">Please enter a valid email.</p>
+          <p id="emailError" class="text-sm text-red-500 mt-1 hidden text-left w-full pl-2 md:pl-0">
+            Please enter a valid email.
+          </p>
         </div>
 
+        <!-- Password input -->
         <div class="flex flex-col md:flex-row items-center mb-8 w-full max-w-[650px] mx-auto">
           <label for="password" class="label mb-2 md:mb-0 md:mr-4 text-left w-full md:w-auto">Password:</label>
           <div class="password-input-container">
             <input type="password" id="password" placeholder="Enter password" class="password-field" />
-            <button type="button" id="togglePassword"><i class="fas fa-eye"></i></button>
+            <button type="button" id="togglePassword">
+              <i class="fas fa-eye"></i>
+            </button>
           </div>
-          <p id="passwordError" class="text-sm text-red-500 mt-1 hidden text-left w-full pl-2 md:pl-0">Password must be at least 8 characters.</p>
+          <p id="passwordError" class="text-sm text-red-500 mt-1 hidden text-left w-full pl-2 md:pl-0">
+            Password must be at least 8 characters.
+          </p>
         </div>
 
         <div class="flex justify-between items-center text-base mb-10 w-full max-w-[650px] mx-auto px-2 mt-4">
@@ -67,10 +100,12 @@
           <a href="#" class="link-btn text-base ml-auto">Forgot Password?</a>
         </div>
 
-        <div class="text-center mb-10 w-full max-w-[650px] mx-auto">
-          <button id="loginBtn" disabled class="btn-disabled">Login</button>
-        </div>
 
+       <div class="text-center mb-10 w-full max-w-[650px] mx-auto">
+        <a href="librarianDashboard_responsive.html">
+            <button id="loginBtn" disabled class="btn-disabled">Login</button>
+        </a>
+        </div>
         <p class="text-center text-base w-full max-w-[650px] mx-auto">
           Don't have an account? <a href="#" class="link-btn">Sign up!</a>
         </p>
@@ -78,6 +113,7 @@
     </main>
   </div>
 
-  <script src="loginScript.js"></script>
+  <script src="login.js"></script>
 </body>
+
 </html>
