@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Handle notification action
     function handleNotificationAction(notification) {
         if (notification.action === 'viewRequest') {
-            const request = bookingRequests.find(r => r.id === notification.requestId);
+            const request = bookingRequestsBtn.find(r => r.id === notification.requestId);
             if (request) {
                 showRequestDetails(request, notification.id);
             }
